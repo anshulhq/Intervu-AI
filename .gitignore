@@ -1,0 +1,67 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+
+# Production
+dist
+build
+out
+
+# Next.js
+.next/
+.vercel
+
+# Misc
+.DS_Store
+*.pem
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Agent Logs
+agent_logs*.txt
+agents_files*.txt
+check_results.txt
+
+# Python Virtual Environments
+venv/
+venv
+env/
+__pycache__/
+
+# IDE
+.vscode/
+.idea/
+
+# Python
+.python-version
+
+# Build artifacts
+*.tsbuildinfo
+
+# Logs
+agent.log
+backend.log
+frontend.log
+
+# OS
+Thumbs.db
+
+# Misc text files
+agent_dir.txt
+s_methods.txt
+sdir.txt
+sig.txt
+voice_init.txt
