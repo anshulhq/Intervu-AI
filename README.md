@@ -145,12 +145,15 @@ Open **http://localhost:3000** to start an interview.
 
 <table>
 <tr>
-<td width="50%"><strong>Live Interview Room</strong><br/><img src="assets/screenshots/final_report_transcript_section.png" alt="Interview room with transcript and code editor" /></td>
+<td width="50%"><strong>Live Interview Room</strong><br/><img src="assets/screenshots/hero.png" alt="Interview room with code editor and voice controls" /></td>
 <td width="50%"><strong>Analyzing Performance</strong><br/><img src="assets/screenshots/analyzing_performance_screen.png" alt="Report generation screen" /></td>
 </tr>
 <tr>
 <td width="50%"><strong>Verdict & Scores</strong><br/><img src="assets/screenshots/final_report_top_section.png" alt="Score breakdown with radar chart" /></td>
 <td width="50%"><strong>Detailed Feedback Report</strong><br/><img src="assets/screenshots/final_report_review_section.png" alt="Feedback sections with strengths, summary, and improvements" /></td>
+</tr>
+<tr>
+<td colspan="2"><strong>Transcript Generation</strong><br/><img src="assets/screenshots/final_report_transcript_section.png" alt="Interview transcript with code review" /></td>
 </tr>
 </table>
 
