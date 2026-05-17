@@ -19,8 +19,7 @@ A voice-driven mock interview platform where an AI agent conducts realistic codi
 </p>
 
 <p align="center">
-<!-- TODO: Add demo video walkthrough here -->
-<a href="LINK_TO_DEMO_VIDEO">
+<a href="https://github.com/user-attachments/assets/01a396c0-d9c2-4ec7-af7f-8c7209b9392c">
 <img src="assets/screenshots/hero.png" alt="Intervu AI landing page" width="100%" />
 </a>
 </p>
