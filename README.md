@@ -1,11 +1,6 @@
 <p align="center">
-  <img src="./assets/intervu-ai.svg" alt="Intervu AI" width="300" />
+  <img src="./assets/intervu.svg" alt="Intervu AI" width="500" height="250" />
 </p>
-
-<h1 align="center">
-<img src="assets/screenshots/logo.png" alt="Intervu AI logo" width="48" style="vertical-align: middle; margin-right: 8px;" />
-Intervu AI
-</h1>
 
 <p align="center"><strong>Practice technical interviews with an AI that talks back.</strong></p>
 
