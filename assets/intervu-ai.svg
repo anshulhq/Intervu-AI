@@ -1,0 +1,75 @@
+<svg fill="none" width="100%" height="100%" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f5a0" stop-opacity="0.9"/>
+      <stop offset="55%" stop-color="#10b981" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#064e3b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="micGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6ee7b7"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outermost faint ring -->
+  <circle cx="150" cy="100" r="80" fill="none" stroke="#10b981" stroke-width="0.4" opacity="0.1">
+    <animate attributeName="r" values="80;84;80" dur="5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Outer dashed orbit -->
+  <circle cx="150" cy="100" r="65" fill="none" stroke="#059669" stroke-width="0.5" opacity="0.12" stroke-dasharray="3 8">
+    <animateTransform attributeName="transform" type="rotate" from="0 150 100" to="360 150 100" dur="25s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Mid ring counter rotate -->
+  <circle cx="150" cy="100" r="52" fill="none" stroke="#34d399" stroke-width="0.5" opacity="0.12" stroke-dasharray="5 12">
+    <animateTransform attributeName="transform" type="rotate" from="360 150 100" to="0 150 100" dur="18s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Inner subtle ring -->
+  <circle cx="150" cy="100" r="40" fill="none" stroke="#10b981" stroke-width="0.6" opacity="0.1" stroke-dasharray="2 6">
+    <animateTransform attributeName="transform" type="rotate" from="0 150 100" to="360 150 100" dur="12s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Core glow -->
+  <circle cx="150" cy="100" r="30" fill="url(#coreGrad)" opacity="0.3">
+    <animate attributeName="r" values="30;33;30" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Inner solid core -->
+  <circle cx="150" cy="100" r="18" fill="#10b981" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.45;0.3" dur="4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Bright center -->
+  <circle cx="150" cy="100" r="7" fill="#00f5a0" opacity="0.8">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Orbital dot -->
+  <circle cx="215" cy="100" r="2.2" fill="#34d399" opacity="0.6">
+    <animateTransform attributeName="transform" type="rotate" from="0 150 100" to="360 150 100" dur="6s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Second orbital dot -->
+  <circle cx="100" cy="100" r="1.6" fill="#6ee7b7" opacity="0.45">
+    <animateTransform attributeName="transform" type="rotate" from="0 150 100" to="-360 150 100" dur="9s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Mic -->
+  <g transform="translate(150, 185)" opacity="0.5">
+    <rect x="-5" y="-15" width="10" height="20" rx="5" fill="url(#micGrad)" opacity="0.7"/>
+    <path d="M-9,-5 Q-9,-20 0,-20 Q9,-20 9,-5" fill="none" stroke="#34d399" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+    <line x1="0" y1="5" x2="0" y2="12" stroke="#059669" stroke-width="1" opacity="0.35"/>
+    <line x1="-5" y1="12" x2="5" y2="12" stroke="#059669" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+  </g>
+
+  <!-- Brand -->
+  <text x="150" y="226" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" font-weight="700" fill="url(#textGrad)" letter-spacing="1">Intervu AI</text>
+  <text x="150" y="245" text-anchor="middle" font-family="ui-monospace,monospace" font-size="6" fill="#6ee7b7" letter-spacing="2" opacity="0.4">REAL-TIME VOICE AI • TECHNICAL INTERVIEWER</text>
+</svg>

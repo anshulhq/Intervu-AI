@@ -1,3 +1,5 @@
+![Intervu AI](./assets/intervu-ai.svg)
+
 <h1 align="center">
 <img src="assets/screenshots/logo.png" alt="Intervu AI logo" width="48" style="vertical-align: middle; margin-right: 8px;" />
 Intervu AI
