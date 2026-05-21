@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/intervu.svg" alt="Intervu AI" width="500" height="250" />
+  <img src="./assets/intervu.svg" alt="Intervu AI" width="500" height="450" />
 </p>
 
 <p align="center"><strong>Practice technical interviews with an AI that talks back.</strong></p>
