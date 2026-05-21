@@ -17,7 +17,7 @@ A voice-driven mock interview platform where an AI agent conducts realistic codi
 <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" />
 </p>
 
-https://github.com/user-attachments/assets/351a2a61-1c36-4725-8165-5ca21b1f03a7
+https://github.com/user-attachments/assets/01a396c0-d9c2-4ec7-af7f-8c7209b9392c
 
 > Watch the walkthrough above to see a full interview session from start to finish.
 
