@@ -1,4 +1,6 @@
-![Intervu AI](./assets/intervu-ai.svg)
+<p align="center">
+  <img src="./assets/intervu-ai.svg" alt="Intervu AI" width="300" />
+</p>
 
 <h1 align="center">
 <img src="assets/screenshots/logo.png" alt="Intervu AI logo" width="48" style="vertical-align: middle; margin-right: 8px;" />
