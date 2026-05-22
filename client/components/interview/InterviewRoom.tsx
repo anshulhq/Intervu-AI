@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Panel, Group as PanelGroup, Separator as PanelResizeHandle } from 'react-resizable-panels';
 import { CodeEditor } from './CodeEditor';
 import { VoiceComponent } from './VoiceComponent';
-import { LinkedListVisualization } from './LinkedListVisualization';
+import { getVisualization } from './visualizations/registry';
 import {
     FileCode,
     Sparkles,
@@ -105,9 +105,10 @@ function QuestionPanel({ question }: { question: Question }) {
                     </div>
                 </div>
             )}
-            {question.visualization === 'linked-list-reversal' && (
-                <LinkedListVisualization />
-            )}
+            {(() => {
+                const Viz = getVisualization(question.visualization);
+                return Viz ? <Viz /> : null;
+            })()}
         </div>
     );
 }

@@ -3,50 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import Session from '../models/Session';
 import { AccessToken } from 'livekit-server-sdk';
 import { generateReport } from '../services/reportGenerator';
+import { QUESTION_BANK, QuestionDef } from '../data/questions';
 
 const router = express.Router();
 
 import redis from '../lib/redis';
-
-interface QuestionDef {
-  title: string;
-  description: string;
-  examples: string[];
-  starterCode: string;
-  language: string;
-  fileName: string;
-  visualization?: string;
-}
-
-const QUESTIONS: QuestionDef[] = [
-  {
-    title: "Reverse Linked List",
-    description: `Given the head of a singly linked list, reverse the list, and return the reversed list.`,
-    examples: [
-      "Input: head = [1,2,3,4,5]\nOutput: [5,4,3,2,1]",
-      "Input: head = [1,2]\nOutput: [2,1]",
-      "Input: head = []\nOutput: []"
-    ],
-    starterCode: `/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode reverseList(ListNode head) {
-        
-    }
-}`,
-    language: "java",
-    fileName: "Solution.java",
-    visualization: "linked-list-reversal"
-  }
-];
 
 // ============================================================================
 // DYNAMIC QUESTION SELECTION - Randomizes question order for each session
@@ -72,7 +33,7 @@ function shuffleQuestions<T>(array: T[]): T[] {
  * @param count - Number of questions to select (default: 2)
  * @returns Randomly selected and shuffled questions
  */
-function selectRandomQuestions(pool: typeof QUESTIONS, count: number = 2): typeof QUESTIONS {
+function selectRandomQuestions(pool: QuestionDef[], count: number = 2): QuestionDef[] {
   const shuffled = shuffleQuestions(pool);
   return shuffled.slice(0, Math.min(count, pool.length));
 }
@@ -146,10 +107,22 @@ router.post('/save-analysis', async (req: Request, res: Response) => {
   }
 });
 
+// GET /questions - List all available questions in the bank
+router.get('/questions', (_req: Request, res: Response) => {
+  const questions = QUESTION_BANK.map(({ id, title, difficulty, category, tags }) => ({
+    id,
+    title,
+    difficulty,
+    category,
+    tags,
+  }));
+  res.json({ questions, total: questions.length });
+});
+
 // POST /start
 router.post('/start', async (req: Request, res: Response) => {
   try {
-    const allQuestions = selectRandomQuestions(QUESTIONS, Math.min(QUESTIONS.length, 2));
+    const allQuestions = selectRandomQuestions(QUESTION_BANK, Math.min(QUESTION_BANK.length, 2));
     const numQuestionsToShow = allQuestions.length;
 
     const sessionId = "intervu-ai-interview";
