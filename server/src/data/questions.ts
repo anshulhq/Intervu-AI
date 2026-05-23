@@ -1,6 +1,18 @@
 /**
  * Question Bank — Scalable Interview Question Registry
  *
+ * This module serves as the single source of truth for all interview questions
+ * used during live Intervu AI sessions. Each question is defined as a `QuestionDef`
+ * object and registered in the `QUESTION_BANK` array.
+ *
+ * Architecture:
+ *   - When a session starts (POST /start), the route handler calls `selectRandomQuestions()`
+ *     which shuffles the bank and picks a subset (typically 2 questions).
+ *   - The first question is sent to the frontend immediately; the rest are stored
+ *     in the session for the agent to potentially advance to later.
+ *   - The Python voice agent receives the problem context via LiveKit data channels
+ *     and injects it into its Socratic prompt so it can guide the candidate in real-time.
+ *
  * To add a new question:
  *   1. Create an object matching the `QuestionDef` interface below
  *   2. Push it into the `QUESTION_BANK` array
@@ -11,8 +23,27 @@
  * That's it. No other files need to change.
  */
 
+// Supported difficulty levels for question classification.
+// Used by the frontend for display and by the agent to calibrate expectations.
 export type Difficulty = "easy" | "medium" | "hard";
 
+/**
+ * QuestionDef — The shape of a single interview question.
+ *
+ * Each question contains everything needed to present the problem to the candidate
+ * and for the AI agent to evaluate responses:
+ *   - `id`: Unique slug used as the primary key for lookups (e.g., "two-sum")
+ *   - `title`: Human-readable name shown in the UI header and agent greeting
+ *   - `description`: Full problem statement with constraints (shown in the Problem tab)
+ *   - `examples`: Input/output pairs displayed below the description
+ *   - `starterCode`: Pre-populated code skeleton in the editor (language-specific)
+ *   - `language` / `fileName`: Editor language mode and filename for the code panel
+ *   - `difficulty`: Easy/medium/hard classification for adaptive interview logic
+ *   - `category`: Broad topic area (e.g., "Arrays & Hashing", "Linked Lists")
+ *   - `tags`: Fine-grained topic tags for filtering and future recommendation logic
+ *   - `visualization`: Optional key that maps to a React component for interactive
+ *     visual aids (e.g., linked list node animations). If undefined, no viz is shown.
+ */
 export interface QuestionDef {
   id: string;
   title: string;
@@ -27,6 +58,19 @@ export interface QuestionDef {
   visualization?: string;
 }
 
+/**
+ * QUESTION_BANK — The master registry of all available interview questions.
+ *
+ * At session creation time (POST /start), `selectRandomQuestions()` shuffles this
+ * array and picks the first N entries. This ensures every candidate gets a different
+ * question order, reducing the chance of leaked answers being useful.
+ *
+ * Currently contains 4 questions spanning:
+ *   - Linked Lists (Reverse Linked List — with live visualization)
+ *   - Arrays & Hashing (Two Sum)
+ *   - Stacks (Valid Parentheses)
+ *   - Binary Search (Binary Search)
+ */
 export const QUESTION_BANK: QuestionDef[] = [
   {
     id: "reverse-linked-list",
@@ -58,6 +102,9 @@ class Solution {
     difficulty: "easy",
     category: "Linked Lists",
     tags: ["linked-list", "recursion", "iteration"],
+    // Links to the LinkedListVisualization component on the frontend.
+    // When the candidate is on this question, the Problem tab renders
+    // an interactive linked-list diagram showing node pointer reversal.
     visualization: "linked-list-reversal",
   },
   {
@@ -124,18 +171,35 @@ class Solution {
   },
 ];
 
+/**
+ * Lookup a single question by its unique `id` slug.
+ * Used when the agent or a route needs to reference a specific question.
+ */
 export function getQuestionById(id: string): QuestionDef | undefined {
   return QUESTION_BANK.find((q) => q.id === id);
 }
 
+/**
+ * Filter questions by their broad category (e.g., "Linked Lists", "Arrays & Hashing").
+ * Useful for building category-specific interview flows in the future.
+ */
 export function getQuestionsByCategory(category: string): QuestionDef[] {
   return QUESTION_BANK.filter((q) => q.category === category);
 }
 
+/**
+ * Filter questions by difficulty level.
+ * Can be used to implement adaptive difficulty — e.g., start easy,
+ * escalate to medium/hard if the candidate performs well.
+ */
 export function getQuestionsByDifficulty(difficulty: Difficulty): QuestionDef[] {
   return QUESTION_BANK.filter((q) => q.difficulty === difficulty);
 }
 
+/**
+ * Filter questions by a specific tag (e.g., "hash-map", "recursion").
+ * Tags enable fine-grained topic targeting for focused practice sessions.
+ */
 export function getQuestionsByTag(tag: string): QuestionDef[] {
   return QUESTION_BANK.filter((q) => q.tags.includes(tag));
 }
