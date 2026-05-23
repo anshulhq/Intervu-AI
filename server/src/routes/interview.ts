@@ -1,3 +1,29 @@
+/**
+ * Interview Routes — Question Selection, Session Lifecycle & Submission Handlers
+ *
+ * This module defines all Express routes that power the interview experience:
+ *
+ *   POST /start              → Create a new session with randomly selected questions
+ *   POST /submit-question    → Submit current question answer & advance to next
+ *   POST /advance-question   → Agent-triggered question advancement (no code save)
+ *   POST /submit             → Final submission triggering report generation
+ *   POST /livekit/token      → Generate LiveKit access token for voice channel
+ *   POST /save-analysis      → Webhook for Python agent to save its evaluation
+ *   GET  /questions          → List all questions in the bank (metadata only)
+ *   GET  /session/:id        → Fetch current session state (polling endpoint)
+ *
+ * Question Selection Flow:
+ *   1. POST /start calls selectRandomQuestions() which shuffles QUESTION_BANK
+ *      using Fisher-Yates and slices the first 2 questions.
+ *   2. The first question becomes the "active" question immediately.
+ *   3. All selected questions are persisted in the Session document so the
+ *      agent can later decide whether to advance to question 2 based on
+ *      the candidate's performance.
+ *   4. The agent calls POST /advance-question when it decides the candidate
+ *      needs a second problem, or the candidate can use POST /submit-question
+ *      to manually advance.
+ */
+
 import express, { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import Session from '../models/Session';
@@ -14,8 +40,16 @@ import redis from '../lib/redis';
 // ============================================================================
 
 /**
- * Fisher-Yates shuffle algorithm for randomizing question order
- * @param array - Array to shuffle (creates a new shuffled array, doesn't mutate)
+ * Fisher-Yates shuffle algorithm for randomizing question order.
+ *
+ * Why Fisher-Yates? It produces an unbiased permutation — every possible
+ * ordering is equally likely. This prevents question-order bias across
+ * candidates and makes it harder to cheat by memorizing a fixed sequence.
+ *
+ * Creates a new array (does not mutate the input) so QUESTION_BANK
+ * remains stable across concurrent requests.
+ *
+ * @param array - Array to shuffle
  * @returns Shuffled copy of the array
  */
 function shuffleQuestions<T>(array: T[]): T[] {
@@ -28,8 +62,18 @@ function shuffleQuestions<T>(array: T[]): T[] {
 }
 
 /**
- * Select a random subset of questions from the pool
- * @param pool - Full question pool
+ * Select a random subset of questions from the full question pool.
+ *
+ * This is called once when a session starts (POST /start). It:
+ *   1. Shuffles the entire QUESTION_BANK
+ *   2. Takes the first `count` entries (default: 2)
+ *   3. Returns them as the session's question set
+ *
+ * The count is capped at the pool size to avoid slicing beyond the array.
+ * These selected questions are then stored in MongoDB via the Session model
+ * and cached in the in-memory sessionCache for fast reads.
+ *
+ * @param pool - Full question pool (typically QUESTION_BANK)
  * @param count - Number of questions to select (default: 2)
  * @returns Randomly selected and shuffled questions
  */
@@ -38,10 +82,26 @@ function selectRandomQuestions(pool: QuestionDef[], count: number = 2): Question
   return shuffled.slice(0, Math.min(count, pool.length));
 }
 
-// In-memory cache for sessions
+/**
+ * In-memory session cache (Map<sessionId, sessionObject>).
+ *
+ * Purpose: Avoid hitting MongoDB on every poll/transcript update during
+ * an active interview. The session is written to both this cache and
+ * MongoDB on every state change so they stay in sync.
+ *
+ * Limitation: This is per-process — if the server restarts, the cache
+ * is rebuilt from MongoDB on the next GET /session/:id call.
+ */
 const sessionCache = new Map<string, any>();
 
-// POST /livekit/token
+// ============================================================================
+// POST /livekit/token — Generate a LiveKit access token for the voice channel
+// ============================================================================
+// This is called by the frontend after the user clicks "Begin Session".
+// The token allows the candidate's browser to connect to the LiveKit room
+// where the Python voice agent is already waiting. The room name equals
+// the sessionId, creating a 1:1 mapping between interview sessions and
+// voice rooms.
 router.post('/livekit/token', async (req: Request, res: Response) => {
   const { sessionId, participantName } = req.body;
 
@@ -58,6 +118,9 @@ router.post('/livekit/token', async (req: Request, res: Response) => {
       return res.status(500).json({ error: 'LiveKit configuration is missing' });
     }
 
+    // Create a JWT access token granting the participant permission to
+    // join the room, publish their microphone audio, and subscribe to
+    // the agent's audio track.
     const at = new AccessToken(apiKey, apiSecret, {
       identity: participantName,
     });
@@ -82,7 +145,13 @@ router.post('/livekit/token', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to generate token' });
   }
 });
-// POST /save-analysis - Called by Python Agent to save the final report
+
+// ============================================================================
+// POST /save-analysis — Webhook called by the Python Agent to save the final report
+// ============================================================================
+// After the voice interview ends, the Python agent may independently generate
+// an evaluation report and POST it here. This is an alternative to the
+// Node-based reportGenerator — the system supports both paths.
 router.post('/save-analysis', async (req: Request, res: Response) => {
   const { sessionId, analysis } = req.body;
 
@@ -92,8 +161,9 @@ router.post('/save-analysis', async (req: Request, res: Response) => {
       return res.status(404).json({ error: 'Session not found' });
     }
 
+    // Overwrite any existing feedback with the agent's analysis
+    // and mark the session as completed so the frontend shows the report.
     session.feedback = analysis;
-    // Mark as completed if not already
     session.status = 'completed';
 
     await session.save();
@@ -107,7 +177,12 @@ router.post('/save-analysis', async (req: Request, res: Response) => {
   }
 });
 
-// GET /questions - List all available questions in the bank
+// ============================================================================
+// GET /questions — List all available questions in the bank (metadata only)
+// ============================================================================
+// Returns a lightweight summary (id, title, difficulty, category, tags) for
+// each question. Used by the frontend landing page to show available topics.
+// Does NOT include starterCode or description to keep the payload small.
 router.get('/questions', (_req: Request, res: Response) => {
   const questions = QUESTION_BANK.map(({ id, title, difficulty, category, tags }) => ({
     id,
@@ -119,19 +194,40 @@ router.get('/questions', (_req: Request, res: Response) => {
   res.json({ questions, total: questions.length });
 });
 
-// POST /start
+// ============================================================================
+// POST /start — Create a new interview session with random questions
+// ============================================================================
+// This is the main entry point for the interview flow. It:
+//   1. Selects 2 random questions from QUESTION_BANK (or fewer if the bank is smaller)
+//   2. Creates/overwrites a session document in MongoDB with:
+//      - The full list of selected questions
+//      - The first question as the "active" question
+//      - The starter code pre-loaded in the editor
+//   3. Caches the session in memory for fast access
+//   4. Returns the active question details to the frontend
+//
+// Note: Currently uses a fixed sessionId ("intervu-ai-interview") meaning
+// only one session can exist at a time. This is a known limitation for
+// the MVP — the upsert on findOneAndUpdate ensures the session is refreshed.
 router.post('/start', async (req: Request, res: Response) => {
   try {
+    // Select up to 2 random questions from the bank for this session
     const allQuestions = selectRandomQuestions(QUESTION_BANK, Math.min(QUESTION_BANK.length, 2));
     const numQuestionsToShow = allQuestions.length;
 
+    // Fixed session ID — only one active interview at a time (MVP limitation)
     const sessionId = "intervu-ai-interview";
 
+    // The first question becomes the active question shown to the candidate
     const firstQuestion = allQuestions[0];
 
     console.log(`[Dynamic Questions] Selected questions: ${allQuestions.map(q => q.title).join(', ')}`);
     console.log(`[Dynamic Questions] Starting with: "${firstQuestion.title}"`);
 
+    // Build the full session document to persist in MongoDB.
+    // `questions` stores ALL selected questions for later advancement.
+    // `question` is the currently active question the candidate sees.
+    // `code` is initialized with the starter code of the first question.
     const sessionData = {
       sessionId,
       questions: allQuestions,
@@ -152,16 +248,19 @@ router.post('/start', async (req: Request, res: Response) => {
       status: 'active'
     };
 
+    // Upsert: create the session or replace the existing one (since sessionId is fixed)
     const session = await Session.findOneAndUpdate(
       { sessionId },
       sessionData,
       { new: true, upsert: true }
     );
 
-    // Cache in memory
+    // Cache in memory so subsequent requests don't need a DB round-trip
     sessionCache.set(sessionId, sessionData);
     console.log(`[Cache] Session ${sessionId} cached. Agent will decide if second question is needed.`);
 
+    // Response sent to the frontend — includes only what's needed to render
+    // the first question in the editor and problem panel.
     const response = {
       sessionId,
       question: session.question,
@@ -180,7 +279,17 @@ router.post('/start', async (req: Request, res: Response) => {
 });
 
 
-// POST /submit-question - Submit current question and advance to next
+// ============================================================================
+// POST /submit-question — Submit current question answer & advance to next
+// ============================================================================
+// Called by the frontend when the candidate clicks "Next" to move from one
+// question to the next. This:
+//   1. Saves the current code + transcript as a submission record
+//   2. If more questions remain: advances to the next question, resets transcript
+//   3. If all questions are done: marks session as completed
+//
+// After completion, the Python agent independently generates a report via
+// POST /save-analysis — this endpoint does NOT trigger report generation.
 router.post('/submit-question', async (req: Request, res: Response) => {
   const { sessionId, code, transcript = [] } = req.body;
 
@@ -193,7 +302,9 @@ router.post('/submit-question', async (req: Request, res: Response) => {
     const currentIndex = session.currentQuestionIndex;
     const totalQuestions = session.questions.length;
 
-    // Save current submission
+    // Save the candidate's code and transcript for this question as a
+    // submission record. This is used by the report generator to evaluate
+    // per-question performance.
     session.submissions.push({
       questionIndex: currentIndex,
       code: code,
@@ -201,9 +312,12 @@ router.post('/submit-question', async (req: Request, res: Response) => {
       submittedAt: new Date()
     });
 
-    // Check if there are more questions
+    // Check if there are more questions remaining in the session
     if (currentIndex + 1 < totalQuestions) {
-      // Advance to next question
+      // Advance to the next question:
+      // - Update the active question in the session
+      // - Reset the code to the next question's starter code
+      // - Clear the transcript so it starts fresh for the new question
       const nextQuestion = session.questions[currentIndex + 1];
       session.currentQuestionIndex = currentIndex + 1;
       session.question = nextQuestion;
@@ -223,13 +337,14 @@ router.post('/submit-question', async (req: Request, res: Response) => {
         message: `Moving to question ${currentIndex + 2} of ${totalQuestions}`
       });
     } else {
-      // All questions completed - trigger final evaluation
+      // All questions have been answered — mark the session as completed.
+      // The Python agent will detect the session end and generate the report
+      // via POST /save-analysis. We do NOT evaluate here.
       session.code = code;
       session.transcript = transcript;
       session.status = 'completed';
 
       console.log("Session completed. Waiting for Agent analysis...");
-      // DO NOT EVALUATE HERE. The Python Agent will generate the report and call /save-analysis
 
       session.status = 'completed';
       await session.save();
@@ -246,8 +361,14 @@ router.post('/submit-question', async (req: Request, res: Response) => {
   }
 });
 
-// POST /advance-question - Agent calls this when it decides candidate needs a second question
-// This is different from submit-question as it doesn't save code, just advances the question
+// ============================================================================
+// POST /advance-question — Agent-triggered question advancement
+// ============================================================================
+// Unlike /submit-question, this is called by the Python voice agent (not the
+// frontend) when it autonomously decides the candidate needs a second question.
+// Key difference: it does NOT save code/transcript — it only advances the
+// active question pointer. The transcript is intentionally preserved to keep
+// the conversation flowing naturally across question boundaries.
 router.post('/advance-question', async (req: Request, res: Response) => {
   const { sessionId } = req.body;
 
@@ -260,13 +381,14 @@ router.post('/advance-question', async (req: Request, res: Response) => {
     const currentIndex = session.currentQuestionIndex;
     const totalQuestions = session.questions.length;
 
-    // Check if there are more questions available
     if (currentIndex + 1 < totalQuestions) {
+      // Advance to the next question without saving any code/transcript.
+      // The transcript is deliberately NOT reset here (unlike /submit-question)
+      // because the agent's conversation should flow continuously.
       const nextQuestion = session.questions[currentIndex + 1];
       session.currentQuestionIndex = currentIndex + 1;
       session.question = nextQuestion;
       session.code = nextQuestion.starterCode;
-      // Don't reset transcript - keep conversation flowing
 
       await session.save();
       sessionCache.set(sessionId, session.toObject());
@@ -293,7 +415,17 @@ router.post('/advance-question', async (req: Request, res: Response) => {
 });
 
 
-// POST /submit
+// ============================================================================
+// POST /submit — Final submission with Node-based report generation
+// ============================================================================
+// Alternative to the agent-driven /save-analysis path. This endpoint:
+//   1. Saves the final code and transcript to the session
+//   2. Triggers the Node.js report generator (reportGenerator.ts) which
+//      calls Groq LLM to produce the forensic evaluation
+//   3. Returns immediately — the client polls GET /session/:id for the report
+//
+// Note: In the current flow, /submit is used as a fallback. The primary
+// path is the Python agent calling /save-analysis after the voice session ends.
 router.post('/submit', async (req: Request, res: Response) => {
   const { sessionId, code, transcript = [] } = req.body;
 
@@ -314,7 +446,8 @@ router.post('/submit', async (req: Request, res: Response) => {
 
     console.log(`[API /submit] Session ${sessionId} submitted. Triggering report generation...`);
 
-    // Fire-and-forget report generation — client polls for result
+    // Fire-and-forget: the report generator runs asynchronously.
+    // The frontend polls GET /session/:sessionId until feedback appears.
     generateReport(sessionId).catch((err) => {
       console.error(`[API /submit] Report generation error for ${sessionId}:`, err);
     });
@@ -329,7 +462,13 @@ router.post('/submit', async (req: Request, res: Response) => {
   }
 });
 
-// GET /session/:sessionId
+// ============================================================================
+// GET /session/:sessionId — Fetch current session state (polling endpoint)
+// ============================================================================
+// The frontend polls this endpoint after submission to check if the report
+// has been generated. Once session.feedback is populated (by either the
+// agent's /save-analysis call or the Node report generator), the frontend
+// redirects to the results page.
 router.get('/session/:sessionId', async (req: Request, res: Response) => {
   const { sessionId } = req.params;
 
@@ -342,6 +481,7 @@ router.get('/session/:sessionId', async (req: Request, res: Response) => {
     const sessionObj = session.toObject();
     sessionCache.set(sessionId, sessionObj);
 
+    // Include computed fields for the frontend
     res.json({
       ...sessionObj,
       totalQuestions: session.questions?.length || 1,
