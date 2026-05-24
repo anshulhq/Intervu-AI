@@ -65,11 +65,12 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 4 questions spanning:
+ * Currently contains 5 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Arrays & Hashing (Two Sum)
  *   - Stacks (Valid Parentheses)
  *   - Binary Search (Binary Search)
+ *   - Binary Search (Search in Rotated Sorted Array)
  */
 export const QUESTION_BANK: QuestionDef[] = [
   {
@@ -168,6 +169,26 @@ class Solution {
     difficulty: "easy",
     category: "Binary Search",
     tags: ["array", "binary-search", "divide-and-conquer"],
+  },
+  {
+    id: "search-in-rotated-sorted-array",
+    title: "Search in Rotated Sorted Array",
+    description:
+      "There is an integer array nums sorted in ascending order (with distinct values).\n\nGiven the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.",
+    examples: [
+      "Input: nums = [4,5,6,7,0,1,2], target = 0\nOutput: 4",
+      "Input: nums = [4,5,6,7,0,1,2], target = 3\nOutput: -1",
+    ],
+    starterCode: `class Solution {
+    public int search(int[] nums, int target) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Binary Search",
+    tags: ["array", "binary-search"],
   },
 ];
 
