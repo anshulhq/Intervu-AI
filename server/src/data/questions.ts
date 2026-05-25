@@ -65,9 +65,10 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 5 questions spanning:
+ * Currently contains 6 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Arrays & Hashing (Two Sum)
+ *   - Arrays & Hashing (Subarray Sum Equals K)
  *   - Stacks (Valid Parentheses)
  *   - Binary Search (Binary Search)
  *   - Binary Search (Search in Rotated Sorted Array)
