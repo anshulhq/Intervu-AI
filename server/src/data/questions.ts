@@ -214,7 +214,13 @@ class Solution {
       "Input: nums = [1,2,3], k = 3\nOutput: 2\nExplanation: Subarrays [1,2] and [3] both sum to 3.",
       "Input: nums = [1,-1,0], k = 0\nOutput: 3\nExplanation: Subarrays [1,-1], [-1,0], and [0] all sum to 0.",
     ],
-    starterCode: "",
+    starterCode: `class Solution {
+    public int subarraySum(int[] nums, int k) {
+        // Hint: Consider using a HashMap to store prefix sums
+        // for O(n) time complexity.
+        
+    }
+}`,
     language: "java",
     fileName: "Solution.java",
     difficulty: "medium",
