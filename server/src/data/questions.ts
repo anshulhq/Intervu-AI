@@ -209,7 +209,11 @@ class Solution {
     title: "Subarray Sum Equals K",
     description:
       "Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.\n\nA subarray is a contiguous non-empty sequence of elements within an array.\n\nConstraints:\n- 1 <= nums.length <= 2 * 10^4\n- -1000 <= nums[i] <= 1000\n- -10^7 <= k <= 10^7",
-    examples: [] as string[],
+    examples: [
+      "Input: nums = [1,1,1], k = 2\nOutput: 2\nExplanation: Subarrays [1,1] found at indices (0,1) and (1,2).",
+      "Input: nums = [1,2,3], k = 3\nOutput: 2\nExplanation: Subarrays [1,2] and [3] both sum to 3.",
+      "Input: nums = [1,-1,0], k = 0\nOutput: 3\nExplanation: Subarrays [1,-1], [-1,0], and [0] all sum to 0.",
+    ],
     starterCode: "",
     language: "java",
     fileName: "Solution.java",
