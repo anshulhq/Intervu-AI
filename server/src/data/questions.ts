@@ -228,6 +228,46 @@ class Solution {
     category: "Arrays & Hashing",
     tags: ["array", "hash-map", "prefix-sum"],
   },
+  {
+    id: "median-from-data-stream",
+    title: "Find Median from Data Stream",
+    description:
+      "The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value and the median is the mean of the two middle values.\n\nFor example, for arr = [2,3,4], the median is 3.\nFor example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.\n\nImplement the MedianFinder class:\n- MedianFinder() initializes the MedianFinder object.\n- void addNum(int num) appends the integer num from the data stream to the data structure.\n- double findMedian() returns the median of all elements so far. Answers within 10^-5 of the actual answer will be accepted.\n\nConstraints:\n- -10^5 <= num <= 10^5\n- There will be at least one element in the data structure before calling findMedian.\n- At most 5 * 10^4 calls will be made to addNum and findMedian.\n\nFollow up:\n1. If all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?\n2. If 99% of all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?",
+    examples: [
+      "Input\n[\"MedianFinder\", \"addNum\", \"addNum\", \"findMedian\", \"addNum\", \"findMedian\"]\n[[], [1], [2], [], [3], []]\nOutput\n[null, null, null, 1.5, null, 2.0]\nExplanation:\nMedianFinder medianFinder = new MedianFinder();\nmedianFinder.addNum(1);    // arr = [1]\nmedianFinder.addNum(2);    // arr = [1, 2]\nmedianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)\nmedianFinder.addNum(3);    // arr[1, 2, 3]\nmedianFinder.findMedian(); // return 2.0",
+      "Input\n[\"MedianFinder\", \"addNum\", \"addNum\", \"findMedian\", \"addNum\", \"findMedian\"]\n[[], [-1], [-2], [], [-3], []]\nOutput\n[null, null, null, -1.5, null, -2.0]\nExplanation:\nMedianFinder medianFinder = new MedianFinder();\nmedianFinder.addNum(-1);    // arr = [-1]\nmedianFinder.addNum(-2);    // arr = [-2, -1]\nmedianFinder.findMedian();  // return -1.5\nmedianFinder.addNum(-3);    // arr = [-3, -2, -1]\nmedianFinder.findMedian();  // return -2.0",
+    ],
+    starterCode: `class MedianFinder {
+    // Hint: Consider using two heaps (priority queues):
+    //   - A max-heap for the lower half of the numbers
+    //   - A min-heap for the upper half of the numbers
+    // This allows O(log n) insertions and O(1) median lookup.
+
+    public MedianFinder() {
+        
+    }
+    
+    public void addNum(int num) {
+        
+    }
+    
+    public double findMedian() {
+        
+    }
+}
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder obj = new MedianFinder();
+ * obj.addNum(num);
+ * double param_2 = obj.findMedian();
+ */`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "hard",
+    category: "Heaps & Priority Queues",
+    tags: ["heap", "priority-queue", "data-stream", "sorting", "design"],
+  },
 ];
 
 /**
