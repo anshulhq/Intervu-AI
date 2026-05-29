@@ -120,7 +120,7 @@ export function formatReport(
 ): DynamicReport {
   const dimensionScores = validateDimensionScores(raw.dimension_scores);
 
-  const computedOverall = computeWeightedScore(dimensionScores);
+  const computedOverall = computeWeightedScore(dimensionScores as unknown as Record<string, number>);
   const llmOverall = clampScore(raw.overall_score);
   const overallScore = Math.round((computedOverall + llmOverall) / 2 * 10) / 10;
 
