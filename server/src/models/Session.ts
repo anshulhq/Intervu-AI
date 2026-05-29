@@ -65,6 +65,9 @@ export interface ISession extends Document {
     language: string;
     fileName: string;
     visualization?: string;
+    difficulty: string;
+    category: string;
+    tags: string[];
   }>;
   // Index into questions[] — tracks which question is currently active
   currentQuestionIndex: number;
@@ -80,6 +83,9 @@ export interface ISession extends Document {
     language: string;
     fileName: string;
     visualization?: string;
+    difficulty: string;
+    category: string;
+    tags: string[];
   };
   // Live code state — updated continuously as the candidate types
   code: string;
@@ -139,6 +145,9 @@ const SessionSchema: Schema = new Schema({
     language: { type: String, default: 'java' },
     fileName: { type: String, default: 'Solution.java' },
     visualization: { type: String },
+    difficulty: { type: String, default: 'medium' },
+    category: { type: String, default: '' },
+    tags: { type: [String], default: [] },
   }],
   currentQuestionIndex: { type: Number, default: 0 },
 
@@ -163,6 +172,9 @@ const SessionSchema: Schema = new Schema({
     language: { type: String, default: 'java' },
     fileName: { type: String, default: 'Solution.java' },
     visualization: { type: String },
+    difficulty: { type: String, default: 'medium' },
+    category: { type: String, default: '' },
+    tags: { type: [String], default: [] },
   },
   code: { type: String, default: '' },
   language: { type: String, default: 'java' },
