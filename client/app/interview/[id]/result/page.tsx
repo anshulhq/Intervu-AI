@@ -448,7 +448,7 @@ export default function ResultPage() {
                     <div className="lg:col-span-2 bg-[#0a0a0a] rounded-2xl border border-zinc-800/60 overflow-hidden">
                         <div className="p-1 max-h-[500px] overflow-y-auto custom-scrollbar">
                             <div className="space-y-1 p-3">
-                                {FAKE_REPORT.transcript.map((msg, idx) => (
+                                {transcript && transcript.map((msg, idx) => (
                                     <div key={idx} className="group p-4 rounded-xl hover:bg-zinc-900/60 transition-colors">
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="flex items-center gap-2.5">
