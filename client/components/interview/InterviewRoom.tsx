@@ -597,7 +597,20 @@ export default function InterviewRoom({
         setIsSubmittingReport(true);
         setToken("");
 
-        await new Promise((resolve) => setTimeout(resolve, 6000));
+        try {
+            await fetch("http://localhost:4000/api/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    sessionId: currentSessionId,
+                    code: code,
+                    transcript: transcript,
+                }),
+            });
+        } catch (e) {
+            console.error("Error submitting session:", e);
+        }
+
         router.push(`/interview/${currentSessionId}/result`);
     };
 
