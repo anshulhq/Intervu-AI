@@ -115,8 +115,21 @@ export interface ISession extends Document {
       time_management: number;
       communication: number;
     };
+    code_issues?: Array<{
+      line_number: number;
+      code_snippet: string;
+      issue: string;
+      suggestion: string;
+      severity: string;
+    }>;
+    transcript_issues?: Array<{
+      quote: string;
+      issue: string;
+      what_should_have_been_said: string;
+      category: string;
+    }>;
     feedback_markdown: string;
-    score?: number; // Legacy field for backwards compatibility
+    score?: number;
   };
   createdAt: Date;
 }
@@ -199,8 +212,21 @@ const SessionSchema: Schema = new Schema({
       time_management: { type: Number },
       communication: { type: Number }
     },
+    code_issues: [{
+      line_number: { type: Number },
+      code_snippet: { type: String },
+      issue: { type: String },
+      suggestion: { type: String },
+      severity: { type: String },
+    }],
+    transcript_issues: [{
+      quote: { type: String },
+      issue: { type: String },
+      what_should_have_been_said: { type: String },
+      category: { type: String },
+    }],
     feedback_markdown: { type: String },
-    score: { type: Number }, // Legacy field
+    score: { type: Number },
   },
   createdAt: { type: Date, default: Date.now },
 });
