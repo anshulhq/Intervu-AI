@@ -89,7 +89,109 @@ function extractBullets(text: string): string[] {
 }
 
 export default function ResultPage() {
-    const { feedback, question, code } = FAKE_REPORT;
+    const params = useParams();
+    const sessionId = params?.id as string;
+
+    const [session, setSession] = useState<SessionData | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [pollCount, setPollCount] = useState(0);
+
+    useEffect(() => {
+        if (!sessionId) return;
+
+        let cancelled = false;
+
+        const fetchSession = async () => {
+            try {
+                const res = await fetch(`http://localhost:4000/api/session/${sessionId}`);
+                if (!res.ok) throw new Error('Session not found');
+                const data = await res.json();
+
+                if (data.feedback) {
+                    if (!cancelled) {
+                        setSession(data);
+                        setLoading(false);
+                    }
+                } else {
+                    if (!cancelled) {
+                        setPollCount((c) => c + 1);
+                    }
+                }
+            } catch (err) {
+                if (!cancelled) {
+                    setError(err instanceof Error ? err.message : 'Failed to fetch session');
+                    setLoading(false);
+                }
+            }
+        };
+
+        fetchSession();
+        const interval = setInterval(fetchSession, 3000);
+
+        return () => {
+            cancelled = true;
+            clearInterval(interval);
+        };
+    }, [sessionId]);
+
+    if (loading) {
+        return (
+            <main className="min-h-screen relative overflow-hidden bg-[#030303] flex items-center justify-center">
+                <div className="bg-dots absolute inset-0 opacity-20 pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.04)_0%,transparent_70%)] pointer-events-none" />
+                <div className="relative text-center max-w-lg px-6">
+                    <div className="relative mx-auto mb-10 w-24 h-24">
+                        <div className="absolute inset-0 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 animate-pulse" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <Sparkles className="w-10 h-10 text-emerald-400" />
+                        </div>
+                    </div>
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 mb-8">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="text-[11px] font-bold uppercase tracking-widest text-emerald-400">
+                            Generating Report
+                        </span>
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight font-display">
+                        Analyzing Your<br /><span className="text-gradient">Performance</span>
+                    </h2>
+                    <p className="text-zinc-500 text-sm sm:text-base leading-relaxed mb-6 max-w-md mx-auto">
+                        Intervu AI is evaluating your code quality, communication clarity, and problem-solving approach.
+                    </p>
+                    {pollCount > 0 && (
+                        <p className="text-zinc-600 text-xs">This may take a moment... (attempt {pollCount})</p>
+                    )}
+                    <div className="flex items-center justify-center mt-6">
+                        <div className="relative w-10 h-10">
+                            <div className="absolute inset-0 border-2 border-emerald-500/20 rounded-full" />
+                            <div className="absolute inset-0 border-2 border-transparent border-t-emerald-500 rounded-full animate-spin" />
+                        </div>
+                    </div>
+                </div>
+            </main>
+        );
+    }
+
+    if (error || !session || !session.feedback) {
+        return (
+            <main className="min-h-screen relative overflow-hidden bg-[#030303] flex items-center justify-center">
+                <div className="bg-dots absolute inset-0 opacity-20 pointer-events-none" />
+                <div className="relative text-center max-w-lg px-6">
+                    <h2 className="text-2xl font-bold text-white mb-4">Report Unavailable</h2>
+                    <p className="text-zinc-500 text-sm">{error || 'No feedback was generated for this session.'}</p>
+                    <Link
+                        href="/"
+                        className="inline-flex items-center gap-2 px-6 py-3 mt-8 bg-emerald-500 text-black rounded-full font-bold text-xs uppercase tracking-wider hover:bg-emerald-400 transition-all"
+                    >
+                        <ArrowLeft className="w-3.5 h-3.5" /> Back Home
+                    </Link>
+                </div>
+            </main>
+        );
+    }
+
+    const { feedback, question, code, transcript } = session;
     const sections = parseMarkdownSections(feedback.feedback_markdown);
 
     const radarData = [
