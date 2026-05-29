@@ -448,12 +448,62 @@ router.post('/submit', async (req: Request, res: Response) => {
     // Update cache
     sessionCache.set(sessionId, session.toObject());
 
-    console.log(`[API /submit] Session ${sessionId} submitted. Triggering report generation...`);
+    console.log(`[API /submit] Session ${sessionId} submitted. Triggering dynamic report generation...`);
 
-    // Fire-and-forget: the report generator runs asynchronously.
-    // The frontend polls GET /session/:sessionId until feedback appears.
-    generateReport(sessionId).catch((err) => {
-      console.error(`[API /submit] Report generation error for ${sessionId}:`, err);
+    const reportPromise = (async () => {
+      try {
+        const freshSession = await Session.findOne({ sessionId });
+        if (!freshSession) return;
+
+        const interviewData: InterviewData = {
+          sessionId: freshSession.sessionId,
+          question: {
+            title: freshSession.question?.title || 'Unknown',
+            description: freshSession.question?.description || '',
+            examples: freshSession.question?.examples || [],
+            difficulty: (freshSession.question as any)?.difficulty || 'medium',
+            category: (freshSession.question as any)?.category || 'General',
+            tags: (freshSession.question as any)?.tags || [],
+          },
+          code: freshSession.code || '',
+          language: freshSession.language || 'java',
+          transcript: (freshSession.transcript || []).map((t: any) => ({
+            role: t.role,
+            content: t.content,
+          })),
+          submissions: (freshSession.submissions || []).map((s: any) => ({
+            questionIndex: s.questionIndex,
+            code: s.code,
+            transcript: (s.transcript || []).map((t: any) => ({
+              role: t.role,
+              content: t.content,
+            })),
+            submittedAt: s.submittedAt,
+          })),
+        };
+
+        const result = await generateDynamicReport(interviewData);
+
+        freshSession.feedback = {
+          overall_score: result.report.overall_score,
+          correctness: result.report.correctness,
+          dimension_scores: result.report.dimension_scores,
+          code_issues: result.report.code_issues,
+          transcript_issues: result.report.transcript_issues,
+          feedback_markdown: result.report.feedback_markdown,
+        };
+        freshSession.status = 'completed';
+        await freshSession.save();
+        sessionCache.set(sessionId, freshSession.toObject());
+
+        console.log(`[DynamicReport] Saved report for ${sessionId}: score=${result.report.overall_score}, success=${result.success}`);
+      } catch (err) {
+        console.error(`[DynamicReport] Failed for ${sessionId}:`, err);
+      }
+    })();
+
+    reportPromise.catch((err) => {
+      console.error(`[API /submit] Dynamic report generation error for ${sessionId}:`, err);
     });
 
     res.json({
