@@ -1,6 +1,7 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import { Editor } from '@monaco-editor/react';
 import { ArrowLeft, CheckCircle2, Target, ArrowRight, Sparkles, Binary, Cpu, Network, Activity, Brain, FileCode } from 'lucide-react';
@@ -15,7 +16,31 @@ import {
     CommunicationIcon,
 } from '@/components/CustomIcons';
 
-const FAKE_REPORT = null;
+interface SessionData {
+    question: {
+        title: string;
+        description: string;
+        language?: string;
+        fileName?: string;
+    };
+    code: string;
+    language: string;
+    fileName: string;
+    transcript: Array<{ role: string; content: string }>;
+    feedback?: {
+        overall_score: number;
+        correctness: boolean;
+        dimension_scores: {
+            problem_solving: number;
+            algorithmic_thinking: number;
+            code_implementation: number;
+            testing: number;
+            time_management: number;
+            communication: number;
+        };
+        feedback_markdown: string;
+    };
+}
 
 function parseMarkdownSections(markdown: string) {
     const sections: Record<string, string> = {};
