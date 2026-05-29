@@ -28,7 +28,8 @@ import express, { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import Session from '../models/Session';
 import { AccessToken } from 'livekit-server-sdk';
-import { generateReport } from '../services/reportGenerator';
+import { generateDynamicReport } from '../services/dynamic-report';
+import type { InterviewData } from '../services/dynamic-report';
 import { QUESTION_BANK, QuestionDef } from '../data/questions';
 
 const router = express.Router();
