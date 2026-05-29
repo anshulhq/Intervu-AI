@@ -25,7 +25,6 @@
  */
 
 import express, { Request, Response } from 'express';
-import { v4 as uuidv4 } from 'uuid';
 import Session from '../models/Session';
 import { AccessToken } from 'livekit-server-sdk';
 import { generateDynamicReport } from '../services/dynamic-report';
