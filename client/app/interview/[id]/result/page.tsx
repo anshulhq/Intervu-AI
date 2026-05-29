@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import { Editor } from '@monaco-editor/react';
-import { ArrowLeft, CheckCircle2, Target, ArrowRight, Sparkles, Binary, Cpu, Network, Activity, Brain, FileCode } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Target, ArrowRight, Sparkles, Binary, Cpu, Network, Activity } from 'lucide-react';
 import Link from 'next/link';
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer } from 'recharts';
 import {
