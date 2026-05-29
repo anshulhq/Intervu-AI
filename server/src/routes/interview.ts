@@ -419,16 +419,20 @@ router.post('/advance-question', async (req: Request, res: Response) => {
 
 
 // ============================================================================
-// POST /submit — Final submission with Node-based report generation
+// POST /submit — Final submission with dynamic report generation
 // ============================================================================
-// Alternative to the agent-driven /save-analysis path. This endpoint:
+// Primary submission endpoint. This endpoint:
 //   1. Saves the final code and transcript to the session
-//   2. Triggers the Node.js report generator (reportGenerator.ts) which
-//      calls Groq LLM to produce the forensic evaluation
+//   2. Triggers the dynamic report generator (dynamic-report/) which uses
+//      pre-analysis, category-adaptive prompts, and weighted dimensions
+//      to produce a forensic evaluation via Groq LLM
 //   3. Returns immediately — the client polls GET /session/:id for the report
 //
-// Note: In the current flow, /submit is used as a fallback. The primary
-// path is the Python agent calling /save-analysis after the voice session ends.
+// The dynamic report pipeline:
+//   InterviewData → Analyzer → PromptBuilder → Generator → Formatter → DynamicReport
+//
+// Alternative path: The Python voice agent can also generate reports independently
+// and save them via POST /save-analysis. Both paths write to the same `feedback` field.
 router.post('/submit', async (req: Request, res: Response) => {
   const { sessionId, code, transcript = [] } = req.body;
 
