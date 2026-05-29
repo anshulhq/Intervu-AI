@@ -480,17 +480,17 @@ export default function ResultPage() {
                                     <div className="w-2 h-2 rounded-full bg-zinc-700" />
                                 </div>
                                 <div className="h-3 w-px bg-zinc-800" />
-                                <span className="text-[11px] font-bold text-zinc-500">Solution.java</span>
+                                <span className="text-[11px] font-bold text-zinc-500">{session.fileName || 'Solution.java'}</span>
                             </div>
                             <div className="flex items-center gap-1.5 px-2 py-1 bg-zinc-900 rounded-md border border-zinc-800/50">
                                 <Binary className="w-3 h-3 text-emerald-400" />
-                                <span className="text-[10px] font-bold text-zinc-500">Java</span>
+                                <span className="text-[10px] font-bold text-zinc-500">{(session.language || 'java').charAt(0).toUpperCase() + (session.language || 'java').slice(1)}</span>
                             </div>
                         </div>
                         <div className="p-1 bg-[#0d1117]">
                             <Editor
                                 height="400px"
-                                language="java"
+                                language={session.language || 'java'}
                                 value={code}
                                 theme="vs-dark"
                                 options={{
