@@ -42,6 +42,12 @@ interface SessionData {
     };
 }
 
+/**
+ * Parses markdown report content into key-value section pairs.
+ * 
+ * @param markdown The raw markdown content from the evaluation feedback.
+ * @returns A record containing header titles mapped to their corresponding body text.
+ */
 function parseMarkdownSections(markdown?: string) {
     const sections: Record<string, string> = {};
     if (!markdown) return sections;
@@ -83,7 +89,14 @@ function parseMarkdownSections(markdown?: string) {
     return sections;
 }
 
-function extractBullets(text: string): string[] {
+/**
+ * Extracts bullet points from a block of text.
+ * 
+ * @param text The markdown text containing lists.
+ * @returns An array of string bullet items.
+ */
+function extractBullets(text?: string): string[] {
+    if (!text) return [];
     return text.split('\n')
         .filter(line => line.trim().startsWith('-') || line.trim().startsWith('*'))
         .map(line => line.replace(/^[-*]\s*/, '').trim());
