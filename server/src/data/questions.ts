@@ -206,8 +206,6 @@ class Solution {
     ],
     starterCode: `class Solution {
     public int subarraySum(int[] nums, int k) {
-        // Hint: Consider using a HashMap to store prefix sums
-        // for O(n) time complexity.
         
     }
 }`,
