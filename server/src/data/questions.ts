@@ -225,10 +225,6 @@ class Solution {
       "Input\n[\"MedianFinder\", \"addNum\", \"addNum\", \"findMedian\", \"addNum\", \"findMedian\"]\n[[], [-1], [-2], [], [-3], []]\nOutput\n[null, null, null, -1.5, null, -2.0]\nExplanation:\nMedianFinder medianFinder = new MedianFinder();\nmedianFinder.addNum(-1);    // arr = [-1]\nmedianFinder.addNum(-2);    // arr = [-2, -1]\nmedianFinder.findMedian();  // return -1.5\nmedianFinder.addNum(-3);    // arr = [-3, -2, -1]\nmedianFinder.findMedian();  // return -2.0",
     ],
     starterCode: `class MedianFinder {
-    // Hint: Consider using two heaps (priority queues):
-    //   - A max-heap for the lower half of the numbers
-    //   - A min-heap for the upper half of the numbers
-    // This allows O(log n) insertions and O(1) median lookup.
 
     public MedianFinder() {
         
