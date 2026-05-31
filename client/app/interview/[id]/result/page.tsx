@@ -390,7 +390,7 @@ export default function ResultPage() {
                                 Summary
                             </h3>
                             <div className="text-zinc-400 text-sm leading-relaxed prose prose-sm prose-invert max-w-none">
-                                <ReactMarkdown>{sections.Summary}</ReactMarkdown>
+                                <ReactMarkdown>{sections.Summary || ''}</ReactMarkdown>
                             </div>
                         </div>
 
