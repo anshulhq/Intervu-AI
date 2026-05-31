@@ -121,20 +121,8 @@ class Solution {
       "Input: nums = [3,3], target = 6\nOutput: [0,1]",
     ],
     starterCode: `class Solution {
-    public int search(int[] nums, int target) {
-        int left = 0, right = nums.length - 1;
-
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-
-            // TODO: Check if mid element is the target
-            
-            // TODO: Determine which half is sorted
-            
-            // TODO: Adjust search boundaries based on sorted half
-        }
-
-        return -1;
+    public int[] twoSum(int[] nums, int target) {
+        
     }
 }`,
     language: "java",
