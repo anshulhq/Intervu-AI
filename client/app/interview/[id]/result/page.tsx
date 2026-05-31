@@ -42,8 +42,9 @@ interface SessionData {
     };
 }
 
-function parseMarkdownSections(markdown: string) {
+function parseMarkdownSections(markdown?: string) {
     const sections: Record<string, string> = {};
+    if (!markdown) return sections;
     const lines = markdown.split('\n');
     let currentSection = '';
     let currentContent: string[] = [];
