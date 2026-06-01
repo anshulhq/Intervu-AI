@@ -92,7 +92,7 @@ function validateTranscriptIssues(raw: any[]): TranscriptIssue[] {
 
 function validateMarkdown(raw: any): string {
   if (typeof raw !== 'string' || raw.trim().length === 0) {
-    return '### Summary\nReport generation produced no feedback content.\n\n### Strengths\n- N/A\n\n### Areas for Improvement\n- N/A\n\n### Code Review\n- N/A';
+    return '### Summary\nReport generation produced no feedback content.\n\n### Strengths\n- N/A\n\n### Areas for Improvement\n- N/A\n\n### Problem-Solving\n- N/A\n\n### Communication\n- N/A\n\n### Code Review\n- N/A';
   }
   return raw;
 }
@@ -153,7 +153,7 @@ export function createFallbackReport(
     },
     code_issues: signals.obviousCodeIssues,
     transcript_issues: signals.obviousTranscriptIssues,
-    feedback_markdown: `### Summary\nReport generation failed: ${errorMessage}\n\n### Strengths\n- N/A\n\n### Areas for Improvement\n- N/A\n\n### Code Review\n- N/A`,
+    feedback_markdown: `### Summary\nReport generation failed: ${errorMessage}\n\n### Strengths\n- N/A\n\n### Areas for Improvement\n- N/A\n\n### Problem-Solving\n- N/A\n\n### Communication\n- N/A\n\n### Code Review\n- N/A`,
     metadata: buildMetadata(data, signals),
   };
 }
