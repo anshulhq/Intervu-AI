@@ -61,7 +61,7 @@ function getGroq(): Groq {
  *     dimension_scores: { problem_solving, algorithmic_thinking, ... },
  *     code_issues: [{ line_number, code_snippet, issue, suggestion, severity }],
  *     transcript_issues: [{ quote, issue, what_should_have_been_said, category }],
- *     feedback_markdown: "### Summary\n### Strengths\n..."
+ *     feedback_markdown: "### Summary\n### Strengths\n### Areas for Improvement\n### Problem-Solving\n### Communication\n### Code Review"
  *   }
  */
 const SYSTEM_PROMPT = `# INTERVU AI REPORT AGENT - IDENTITY
