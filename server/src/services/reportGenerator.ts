@@ -126,11 +126,25 @@ The interview has concluded. Your job is to provide a Forensic, Deep-Dive Analys
   "feedback_markdown": "<full markdown report>"
 }
 
-The feedback_markdown MUST use these EXACT headers:
+The feedback_markdown MUST use these EXACT headers and follow this deep analysis style:
+
 ### Summary
+Provide a thorough, detailed overview of the interview performance. Discuss the candidate's core approach, efficiency, and how they handled the overall structure of the interview. Include specific details about their progress and key takeaways. Avoid generic sentences and write at least 2-3 detailed paragraphs.
+
 ### Strengths
+Identify and elaborate on specific technical, algorithmic, and coding strengths demonstrated by the candidate during the interview, citing concrete examples (e.g., specific lines of code, concepts mentioned, or optimal decisions). Do NOT just list brief bullets. Each bullet point must be a detailed 2-3 sentence analysis.
+
 ### Areas for Improvement
+Provide a detailed, constructive critique of areas where the candidate struggled, made suboptimal choices, or could optimize further. Refer to specific lines in their code or quotes from their transcript to justify these points. Each point must be detailed, comprehensive, and actionable.
+
+### Problem-Solving
+Evaluate the candidate's problem-solving strategy, logical progression, edge case handling, and ability to break down the problem. Detail how they structured their thoughts, whether they identified key insights on their own or required hints, and how effectively they translated their plan into a working algorithm. Provide a thorough, detailed paragraphs-based analysis.
+
+### Communication
+Analyze the candidate's verbal clarity, precision in technical terminology, and interactive behavior. Critique how well they explained their thought process before and during coding, how they responded to questions or hints from the interviewer, and the overall structured quality of their explanations. Write a detailed analysis with specific quotes/observations from the transcript.
+
 ### Code Review
+Provide a comprehensive, line-by-line or component-by-component technical critique of their submitted code. Analyze time and space complexities in detail (citing Big-O notation), coding style, naming conventions, safety (e.g., null checks, bounds checks), and structural design. Give precise suggestions for refactoring.
 
 Do NOT output any text before or after the JSON.`;
 
@@ -272,7 +286,7 @@ Generate the JSON evaluation now. Output ONLY valid JSON, no other text.`;
               },
               code_issues: [],
               transcript_issues: [],
-              feedback_markdown: `### Summary\nReport generation failed. Please try another interview.\n\n### Error\n${error instanceof Error ? error.message : 'Unknown error'}`,
+              feedback_markdown: `### Summary\nReport generation failed. Please try another interview.\n\n### Error\n${error instanceof Error ? error.message : 'Unknown error'}\n\n### Strengths\n- N/A\n\n### Areas for Improvement\n- N/A\n\n### Problem-Solving\n- N/A\n\n### Communication\n- N/A\n\n### Code Review\n- N/A`,
             },
             status: 'completed',
           },
