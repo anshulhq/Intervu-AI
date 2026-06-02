@@ -251,6 +251,27 @@ class Solution {
     category: "Heaps & Priority Queues",
     tags: ["heap", "priority-queue", "data-stream", "sorting", "design"],
   },
+  {
+    id: "rotate-array",
+    title: "Rotate Array",
+    description:
+      "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.\n\nTry to solve it in-place with O(1) extra space.",
+    examples: [
+      "Input: nums = [1,2,3,4,5,6,7], k = 3\nOutput: [5,6,7,1,2,3,4]\nExplanation:\nrotate 1 steps to the right: [7,1,2,3,4,5,6]\nrotate 2 steps to the right: [6,7,1,2,3,4,5]\nrotate 3 steps to the right: [5,6,7,1,2,3,4]",
+      "Input: nums = [-1,-100,3,99], k = 2\nOutput: [3,99,-1,-100]\nExplanation:\nrotate 1 steps to the right: [99,-1,-100,3]\nrotate 2 steps to the right: [3,99,-1,-100]",
+    ],
+    starterCode: `class Solution {
+    public void rotate(int[] nums, int k) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "two-pointers", "math"],
+    visualization: "rotate-array",
+  },
 ];
 
 /**
