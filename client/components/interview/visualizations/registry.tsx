@@ -2,11 +2,13 @@
 
 import React from "react";
 import { LinkedListVisualization } from "../LinkedListVisualization";
+import { RotateArrayVisualization } from "../RotateArrayVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
 const registry: Record<string, VisualizationComponent> = {
   "linked-list-reversal": LinkedListVisualization,
+  "rotate-array": RotateArrayVisualization,
 };
 
 /**
