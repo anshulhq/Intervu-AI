@@ -9,6 +9,18 @@ interface ArrayStepInfo {
   codeSnippet: string;
 }
 
+/**
+ * RotateArrayVisualization
+ * 
+ * An interactive, premium visual aid for the "Rotate Array" (LeetCode 189) problem.
+ * It demonstrates the optimal O(1) space complexity algorithm which uses three successive
+ * array reversals:
+ *   1. Reverse the entire array
+ *   2. Reverse the first k elements
+ *   3. Reverse the remaining n-k elements
+ * 
+ * The visualizer allows candidates to step through each phase of this in-place operation.
+ */
 export function RotateArrayVisualization() {
   const [step, setStep] = useState(0);
   const k = 3;
