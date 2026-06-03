@@ -431,6 +431,11 @@
       background: var(--accent-rose);
     }
 
+    .feature-card.completed {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.02);
+    }
+
     .card-title-bar {
       display: flex;
       justify-content: space-between;
@@ -483,6 +488,7 @@
       border-radius: 8px;
       padding: 16px;
       border: 1px solid rgba(63, 63, 70, 0.2);
+      margin-bottom: 20px;
     }
 
     .specs-title {
@@ -514,6 +520,29 @@
     .specs-list li::before {
       content: '⚡';
       font-size: 0.75rem;
+    }
+
+    /* Checklist toggle */
+    .checklist-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      padding-top: 8px;
+      border-top: 1px solid rgba(63, 63, 70, 0.15);
+    }
+
+    .checklist-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent-emerald);
+      cursor: pointer;
+    }
+
+    .checklist-row label {
+      cursor: pointer;
+      user-select: none;
     }
 
     /* Scrollbar */
@@ -563,8 +592,8 @@
         <div class="stat-desc">Structured execution strategy</div>
       </div>
       <div class="stat-card">
-        <div class="stat-val">15+</div>
-        <div class="stat-lbl">Key Features</div>
+        <div class="stat-val">10</div>
+        <div class="stat-lbl">Total Tasks</div>
         <div class="stat-desc">Across client, server & voice agent</div>
       </div>
       <div class="stat-card">
@@ -573,9 +602,9 @@
         <div class="stat-desc">Next.js client & Node/Python servers</div>
       </div>
       <div class="stat-card">
-        <div class="stat-val">94%</div>
-        <div class="stat-lbl">Target Score</div>
-        <div class="stat-desc">Felt-reality candidate satisfaction</div>
+        <div class="stat-val" id="progress-percent">0%</div>
+        <div class="stat-lbl">My Progress</div>
+        <div class="stat-desc">Completed features tracked locally</div>
       </div>
     </div>
     
@@ -613,7 +642,7 @@
         </div>
 
         <div class="roadmap-grid">
-          <div class="feature-card" data-priority="high">
+          <div class="feature-card" data-id="multi-language" data-priority="high">
             <div class="card-title-bar">
               <h3 class="card-title">Multi-Language Code Compilation & Expansion</h3>
               <span class="priority-pill priority-high">High Priority</span>
@@ -627,9 +656,13 @@
                 <li>Wire active language state into the LiveKit data channel channel sync mechanism for Python agent reflection</li>
               </ul>
             </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-multi-language" onchange="toggleTask('multi-language')">
+              <label for="check-multi-language">Mark task as completed</label>
+            </div>
           </div>
 
-          <div class="feature-card" data-priority="high">
+          <div class="feature-card" data-id="visualizer-registry" data-priority="high">
             <div class="card-title-bar">
               <h3 class="card-title">Complex DSA Visualizer Registry</h3>
               <span class="priority-pill priority-high">High Priority</span>
@@ -642,6 +675,10 @@
                 <li>Create TreeVisualizer.tsx utilizing canvas or SVG nodes for BST and Binary Tree problems</li>
                 <li>Extend registry.tsx dynamically to lazy-load visualizations based on active question def ID</li>
               </ul>
+            </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-visualizer-registry" onchange="toggleTask('visualizer-registry')">
+              <label for="check-visualizer-registry">Mark task as completed</label>
             </div>
           </div>
         </div>
@@ -661,7 +698,7 @@
         </div>
 
         <div class="roadmap-grid">
-          <div class="feature-card phase2-theme" data-priority="high">
+          <div class="feature-card phase2-theme" data-id="jwt-auth" data-priority="high">
             <div class="card-title-bar">
               <h3 class="card-title">NextAuth & JWT Authentication Integration</h3>
               <span class="priority-pill priority-high">High Priority</span>
@@ -675,9 +712,13 @@
                 <li>Map user schemas in MongoDB (`server/src/models/User.ts`) linking to `Session` IDs</li>
               </ul>
             </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-jwt-auth" onchange="toggleTask('jwt-auth')">
+              <label for="check-jwt-auth">Mark task as completed</label>
+            </div>
           </div>
 
-          <div class="feature-card phase2-theme" data-priority="med">
+          <div class="feature-card phase2-theme" data-id="performance-dashboard" data-priority="med">
             <div class="card-title-bar">
               <h3 class="card-title">Interactions History & Performance Dashboard</h3>
               <span class="priority-pill priority-med">Medium Priority</span>
@@ -690,6 +731,10 @@
                 <li>Add Recharts trend lines visualizing scores in Logic, Strategy, and Coding over time</li>
                 <li>Enable raw session report downloading in PDF or JSON format</li>
               </ul>
+            </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-performance-dashboard" onchange="toggleTask('performance-dashboard')">
+              <label for="check-performance-dashboard">Mark task as completed</label>
             </div>
           </div>
         </div>
@@ -709,7 +754,7 @@
         </div>
 
         <div class="roadmap-grid">
-          <div class="feature-card phase3-theme" data-priority="high">
+          <div class="feature-card phase3-theme" data-id="room-orchestrator" data-priority="high">
             <div class="card-title-bar">
               <h3 class="card-title">Concurrent Room Orchestration & UUID Sessions</h3>
               <span class="priority-pill priority-high">High Priority</span>
@@ -723,9 +768,13 @@
                 <li>Implement idle session garbage collection to shut down inactive LiveKit rooms</li>
               </ul>
             </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-room-orchestrator" onchange="toggleTask('room-orchestrator')">
+              <label for="check-room-orchestrator">Mark task as completed</label>
+            </div>
           </div>
 
-          <div class="feature-card phase3-theme" data-priority="low">
+          <div class="feature-card phase3-theme" data-id="redis-cache" data-priority="low">
             <div class="card-title-bar">
               <h3 class="card-title">Redis-Backed Transient Caching</h3>
               <span class="priority-pill priority-low">Low Priority</span>
@@ -738,6 +787,10 @@
                 <li>Buffer code keystrokes in Redis and periodically flush (e.g. every 5 seconds or upon submission) to MongoDB</li>
                 <li>Implement quick session recovery retrieving last state from cache after a network drop</li>
               </ul>
+            </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-redis-cache" onchange="toggleTask('redis-cache')">
+              <label for="check-redis-cache">Mark task as completed</label>
             </div>
           </div>
         </div>
@@ -757,7 +810,7 @@
         </div>
 
         <div class="roadmap-grid">
-          <div class="feature-card phase4-theme" data-priority="med">
+          <div class="feature-card phase4-theme" data-id="personality-tuning" data-priority="med">
             <div class="card-title-bar">
               <h3 class="card-title">Difficulty Levels & Agent Personality Tuning</h3>
               <span class="priority-pill priority-med">Medium Priority</span>
@@ -771,9 +824,13 @@
                 <li>Refactor agent.py `build_interview_instructions()` to parse tone options and alter instructions</li>
               </ul>
             </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-personality-tuning" onchange="toggleTask('personality-tuning')">
+              <label for="check-personality-tuning">Mark task as completed</label>
+            </div>
           </div>
 
-          <div class="feature-card phase4-theme" data-priority="med">
+          <div class="feature-card phase4-theme" data-id="custom-questions" data-priority="med">
             <div class="card-title-bar">
               <h3 class="card-title">Custom Question Sandbox & Upload</h3>
               <span class="priority-pill priority-med">Medium Priority</span>
@@ -786,6 +843,10 @@
                 <li>Implement backend REST endpoint (`POST /api/questions`) saving data to a new MongoDB schema</li>
                 <li>Modify session setup router to pull from combined static and custom question pools</li>
               </ul>
+            </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-custom-questions" onchange="toggleTask('custom-questions')">
+              <label for="check-custom-questions">Mark task as completed</label>
             </div>
           </div>
         </div>
@@ -805,7 +866,7 @@
         </div>
 
         <div class="roadmap-grid">
-          <div class="feature-card phase5-theme" data-priority="high">
+          <div class="feature-card phase5-theme" data-id="bug-annotations" data-priority="high">
             <div class="card-title-bar">
               <h3 class="card-title">Interactive Code Bug Annotations</h3>
               <span class="priority-pill priority-high">High Priority</span>
@@ -819,9 +880,13 @@
                 <li>Listen to cursor hover events to render the AI-suggested fix overlay in a custom tooltip</li>
               </ul>
             </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-bug-annotations" onchange="toggleTask('bug-annotations')">
+              <label for="check-bug-annotations">Mark task as completed</label>
+            </div>
           </div>
 
-          <div class="feature-card phase5-theme" data-priority="med">
+          <div class="feature-card phase5-theme" data-id="audio-overlays" data-priority="med">
             <div class="card-title-bar">
               <h3 class="card-title">Semantic Transcript Audio Overlays</h3>
               <span class="priority-pill priority-med">Medium Priority</span>
@@ -835,6 +900,10 @@
                 <li>Build audio-scrubber interfaces synced with highlighting in client/app/interview/[id]/result/page.tsx</li>
               </ul>
             </div>
+            <div class="checklist-row">
+              <input type="checkbox" id="check-audio-overlays" onchange="toggleTask('audio-overlays')">
+              <label for="check-audio-overlays">Mark task as completed</label>
+            </div>
           </div>
         </div>
       </div>
@@ -843,6 +912,13 @@
 
   <script>
     let activePriority = 'all';
+    const totalTasksCount = 10;
+
+    // Run on startup
+    window.addEventListener('DOMContentLoaded', () => {
+      loadChecklistState();
+      updateProgressBar();
+    });
 
     function switchTab(phaseId) {
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -881,6 +957,47 @@
           card.style.display = 'none';
         }
       });
+    }
+
+    // Toggle checklist tasks
+    function toggleTask(id) {
+      const checkbox = document.getElementById('check-' + id);
+      const card = checkbox.closest('.feature-card');
+      
+      if (checkbox.checked) {
+        card.classList.add('completed');
+        localStorage.setItem('roadmap-' + id, 'done');
+      } else {
+        card.classList.remove('completed');
+        localStorage.removeItem('roadmap-' + id);
+      }
+      
+      updateProgressBar();
+    }
+
+    // Load checklist tasks from localstorage
+    function loadChecklistState() {
+      const checkboxes = document.querySelectorAll('.checklist-row input[type="checkbox"]');
+      checkboxes.forEach(box => {
+        const id = box.id.replace('check-', '');
+        const state = localStorage.getItem('roadmap-' + id);
+        if (state === 'done') {
+          box.checked = true;
+          box.closest('.feature-card').classList.add('completed');
+        }
+      });
+    }
+
+    // Update dynamic progress statistics
+    function updateProgressBar() {
+      let completedCount = 0;
+      const checkboxes = document.querySelectorAll('.checklist-row input[type="checkbox"]');
+      checkboxes.forEach(box => {
+        if (box.checked) completedCount++;
+      });
+      
+      const percent = Math.round((completedCount / totalTasksCount) * 100);
+      document.getElementById('progress-percent').innerText = percent + '%';
     }
   </script>
 </body>
