@@ -379,6 +379,10 @@
       background: var(--accent-violet);
     }
 
+    .feature-card.phase4-theme::before {
+      background: var(--accent-amber);
+    }
+
     .card-title-bar {
       display: flex;
       justify-content: space-between;
@@ -675,6 +679,54 @@
                 <li>Deploy local/cloud Redis instance configuration in `server/src/lib/redis.ts`</li>
                 <li>Buffer code keystrokes in Redis and periodically flush (e.g. every 5 seconds or upon submission) to MongoDB</li>
                 <li>Implement quick session recovery retrieving last state from cache after a network drop</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 Panel -->
+      <div id="phase4" class="tab-panel">
+        <div class="phase-header">
+          <div>
+            <span class="phase-badge" style="background: rgba(245, 158, 11, 0.1); color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.2)">Phase 4</span>
+            <h2 class="phase-title">AI Interviewer Customization & Config</h2>
+          </div>
+          <div class="phase-meta">
+            <div class="meta-item"><span class="meta-bullet" style="background-color: var(--accent-amber);"></span>Socratic Prompt Templates</div>
+            <div class="meta-item"><span class="meta-bullet" style="background-color: var(--accent-amber);"></span>Custom Upload Form</div>
+          </div>
+        </div>
+
+        <div class="roadmap-grid">
+          <div class="feature-card phase4-theme">
+            <div class="card-title-bar">
+              <h3 class="card-title">Difficulty Levels & Agent Personality Tuning</h3>
+              <span class="priority-pill priority-med">Medium Priority</span>
+            </div>
+            <p class="card-desc">Configure the AI interviewer's behavioral profile before joining. Candidates can choose between: "Socratic / Encouraging" (guiding questions), "Strict / Silent" (minimal talk, deep reviews), and "Pressure Cooker" (interjects with sudden complexity extensions).</p>
+            <div class="tech-specs">
+              <div class="specs-title">Implementation Specs</div>
+              <ul class="specs-list" style="color: var(--accent-amber)">
+                <li>Update client landing page with pre-interview room setup forms (difficulty/tone selections)</li>
+                <li>Inject chosen preferences into metadata tokens generated for the LiveKit connection handshakes</li>
+                <li>Refactor agent.py `build_interview_instructions()` to parse tone options and alter instructions</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-card phase4-theme">
+            <div class="card-title-bar">
+              <h3 class="card-title">Custom Question Sandbox & Upload</h3>
+              <span class="priority-pill priority-med">Medium Priority</span>
+            </div>
+            <p class="card-desc">Provide an administration interface where developers or premium candidates can upload custom question descriptions, starter skeletons, constraints, and test suites, immediately making them interview-ready.</p>
+            <div class="tech-specs">
+              <div class="specs-title">Implementation Specs</div>
+              <ul class="specs-list" style="color: var(--accent-amber)">
+                <li>Build form components in client (`/questions/new`) capturing structured problem fields</li>
+                <li>Implement backend REST endpoint (`POST /api/questions`) saving data to a new MongoDB schema</li>
+                <li>Modify session setup router to pull from combined static and custom question pools</li>
               </ul>
             </div>
           </div>
