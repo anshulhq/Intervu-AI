@@ -375,6 +375,10 @@
       background: var(--accent-cyan);
     }
 
+    .feature-card.phase3-theme::before {
+      background: var(--accent-violet);
+    }
+
     .card-title-bar {
       display: flex;
       justify-content: space-between;
@@ -408,6 +412,12 @@
       background: rgba(245, 158, 11, 0.1);
       color: var(--accent-amber);
       border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .priority-low {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--accent-violet);
+      border: 1px solid rgba(139, 92, 246, 0.2);
     }
 
     .card-desc {
@@ -617,6 +627,54 @@
                 <li>Create dashboard page `/dashboard` in Next.js client listing previous sessions</li>
                 <li>Add Recharts trend lines visualizing scores in Logic, Strategy, and Coding over time</li>
                 <li>Enable raw session report downloading in PDF or JSON format</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 Panel -->
+      <div id="phase3" class="tab-panel">
+        <div class="phase-header">
+          <div>
+            <span class="phase-badge" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-violet); border-color: rgba(139, 92, 246, 0.2)">Phase 3</span>
+            <h2 class="phase-title">Infrastructure & Concurrent Scalability</h2>
+          </div>
+          <div class="phase-meta">
+            <div class="meta-item"><span class="meta-bullet" style="background-color: var(--accent-violet);"></span>Redis Caching</div>
+            <div class="meta-item"><span class="meta-bullet" style="background-color: var(--accent-violet);"></span>Load Balancing</div>
+          </div>
+        </div>
+
+        <div class="roadmap-grid">
+          <div class="feature-card phase3-theme">
+            <div class="card-title-bar">
+              <h3 class="card-title">Concurrent Room Orchestration & UUID Sessions</h3>
+              <span class="priority-pill priority-high">High Priority</span>
+            </div>
+            <p class="card-desc">Upgrade Express server and LiveKit connection managers to support simultaneous user sessions. Ensure that voice agents are mapped to dynamic UUID keys rather than single rooms, stopping agent overlap.</p>
+            <div class="tech-specs">
+              <div class="specs-title">Implementation Specs</div>
+              <ul class="specs-list" style="color: var(--accent-violet)">
+                <li>Refactor token generation routes to bind room names explicitly to `sessionUuid`</li>
+                <li>Add dynamic voice agent instance spawning with unique identifiers mapping to MongoDB documents</li>
+                <li>Implement idle session garbage collection to shut down inactive LiveKit rooms</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-card phase3-theme">
+            <div class="card-title-bar">
+              <h3 class="card-title">Redis-Backed Transient Caching</h3>
+              <span class="priority-pill priority-low">Low Priority</span>
+            </div>
+            <p class="card-desc">Cache active draft code, voice states (speaking/listening), and transient live transcript steps in a high-speed Redis cluster. Avoid high database write overheads during typing debounces.</p>
+            <div class="tech-specs">
+              <div class="specs-title">Implementation Specs</div>
+              <ul class="specs-list" style="color: var(--accent-violet)">
+                <li>Deploy local/cloud Redis instance configuration in `server/src/lib/redis.ts`</li>
+                <li>Buffer code keystrokes in Redis and periodically flush (e.g. every 5 seconds or upon submission) to MongoDB</li>
+                <li>Implement quick session recovery retrieving last state from cache after a network drop</li>
               </ul>
             </div>
           </div>
