@@ -383,6 +383,10 @@
       background: var(--accent-amber);
     }
 
+    .feature-card.phase5-theme::before {
+      background: var(--accent-rose);
+    }
+
     .card-title-bar {
       display: flex;
       justify-content: space-between;
@@ -727,6 +731,54 @@
                 <li>Build form components in client (`/questions/new`) capturing structured problem fields</li>
                 <li>Implement backend REST endpoint (`POST /api/questions`) saving data to a new MongoDB schema</li>
                 <li>Modify session setup router to pull from combined static and custom question pools</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 5 Panel -->
+      <div id="phase5" class="tab-panel">
+        <div class="phase-header">
+          <div>
+            <span class="phase-badge" style="background: rgba(244, 63, 94, 0.1); color: var(--accent-rose); border-color: rgba(244, 63, 94, 0.2)">Phase 5</span>
+            <h2 class="phase-title">Forensic Performance Reports & Interactive Review</h2>
+          </div>
+          <div class="phase-meta">
+            <div class="meta-item"><span class="meta-bullet" style="background-color: var(--accent-rose);"></span>Monaco Decorations</div>
+            <div class="meta-item"><span class="meta-bullet" style="background-color: var(--accent-rose);"></span>Audio Auditing</div>
+          </div>
+        </div>
+
+        <div class="roadmap-grid">
+          <div class="feature-card phase5-theme">
+            <div class="card-title-bar">
+              <h3 class="card-title">Interactive Code Bug Annotations</h3>
+              <span class="priority-pill priority-high">High Priority</span>
+            </div>
+            <p class="card-desc">Improve the feedback review by mapping text-based compiler and logic bug alerts directly to line numbers in the Monaco code editor. Hovering over decorated lines highlights the issue with a floating popover suggested fix.</p>
+            <div class="tech-specs">
+              <div class="specs-title">Implementation Specs</div>
+              <ul class="specs-list" style="color: var(--accent-rose)">
+                <li>Update reportGenerator.ts to structure code review errors as formal arrays containing line numbers and snippet markers</li>
+                <li>Use Monaco Editor's `deltaDecorations` API to paint visual warning squiggles and gutter icons on error lines</li>
+                <li>Listen to cursor hover events to render the AI-suggested fix overlay in a custom tooltip</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-card phase5-theme">
+            <div class="card-title-bar">
+              <h3 class="card-title">Semantic Transcript Audio Overlays</h3>
+              <span class="priority-pill priority-med">Medium Priority</span>
+            </div>
+            <p class="card-desc">Bind audio recording tracks (WebRTC channels stored in S3/MongoDB) directly to sentence-by-sentence text snippets. Candidates can click transcripts to replay exact soundbites and review voice inflections, speech speeds, and speech gap warnings.</p>
+            <div class="tech-specs">
+              <div class="specs-title">Implementation Specs</div>
+              <ul class="specs-list" style="color: var(--accent-rose)">
+                <li>Configure LiveKit Egress API to record audio tracks and write output to disk/object storage</li>
+                <li>Store exact timestamp offsets on Deepgram Nova-2 transcript text objects</li>
+                <li>Build audio-scrubber interfaces synced with highlighting in client/app/interview/[id]/result/page.tsx</li>
               </ul>
             </div>
           </div>
