@@ -282,6 +282,9 @@ Based on performance, the agent can:
 
 ## Roadmap
 
+A fully interactive version of our engineering roadmap, including detailed technical specifications and a local progress tracker, is available at:
+👉 **[plans.html](./plans.html)** (Open this file in any browser to trace phase details and check off features).
+
 - [ ] Multi-language question bank (currently linked list reversal in Java)
 - [ ] Concurrent session support (UUID-based session IDs)
 - [ ] Redis-backed session caching
