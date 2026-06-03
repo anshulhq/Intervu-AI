@@ -11,7 +11,7 @@
     :root {
       --bg-dark: #030303;
       --bg-card: rgba(18, 18, 18, 0.6);
-      --bg-card-hover: rgba(24, 24, 27, 0.8);
+      --bg-card-hover: rgba(24, 24, 27, 0.85);
       --border-color: rgba(63, 63, 70, 0.35);
       --border-glow: rgba(16, 185, 129, 0.15);
       --text-primary: #f4f4f5;
@@ -236,6 +236,214 @@
       margin-top: 4px;
     }
 
+    /* Tabs Navigation */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 40px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .tab-btn.active {
+      color: var(--accent-emerald);
+      background: var(--accent-emerald-opaque);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    /* Tab content container */
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Phase Layout Cards */
+    .phase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(63, 63, 70, 0.2);
+      padding-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .phase-badge {
+      background: var(--accent-emerald-opaque);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--accent-emerald);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .phase-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 8px;
+    }
+
+    .phase-meta {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 24px;
+      margin-top: 6px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent-teal);
+    }
+
+    /* Roadmap grid */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(16, 185, 129, 0.25);
+      background: var(--bg-card-hover);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-emerald);
+      opacity: 0.5;
+    }
+
+    .card-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .priority-pill {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .priority-high {
+      background: rgba(244, 63, 94, 0.1);
+      color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.2);
+    }
+
+    .card-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .tech-specs {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid rgba(63, 63, 70, 0.2);
+    }
+
+    .specs-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      font-family: var(--font-mono);
+    }
+
+    .specs-list {
+      list-style: none;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--accent-teal);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .specs-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .specs-list li::before {
+      content: '⚡';
+      font-size: 0.75rem;
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
@@ -300,8 +508,77 @@
     </div>
     
     <main>
-      <p style="color: var(--text-muted); text-align: center;">Roadmap content details pending...</p>
+      <!-- Tabs Selector -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab('phase1')">Phase 1: Expansion</button>
+        <button class="tab-btn" onclick="switchTab('phase2')">Phase 2: Auth & History</button>
+        <button class="tab-btn" onclick="switchTab('phase3')">Phase 3: Scale & Cache</button>
+        <button class="tab-btn" onclick="switchTab('phase4')">Phase 4: Agent Settings</button>
+        <button class="tab-btn" onclick="switchTab('phase5')">Phase 5: Forensics Report</button>
+      </div>
+
+      <!-- Phase 1 Panel -->
+      <div id="phase1" class="tab-panel active">
+        <div class="phase-header">
+          <div>
+            <span class="phase-badge">Phase 1</span>
+            <h2 class="phase-title">Question Bank & Live Visualizers</h2>
+          </div>
+          <div class="phase-meta">
+            <div class="meta-item"><span class="meta-bullet"></span>Difficulty Classification</div>
+            <div class="meta-item"><span class="meta-bullet"></span>Multi-Language Starter Code</div>
+          </div>
+        </div>
+
+        <div class="roadmap-grid">
+          <div class="feature-card">
+            <div class="card-title-bar">
+              <h3 class="card-title">Multi-Language Code Compilation & Expansion</h3>
+              <span class="priority-pill priority-high">High Priority</span>
+            </div>
+            <p class="card-desc">Expand the current single-language question bank structure (which is locked to Java class setups) to fully support Python, JavaScript, TypeScript, Go, and C++. The Monaco editor and live parser must detect the user's chosen language and serve the corresponding starter skeleton.</p>
+            <div class="tech-specs">
+              <div class="specs-title">Implementation Specs</div>
+              <ul class="specs-list">
+                <li>Modify server/src/data/questions.ts to support dynamic schemas per language (e.g. starterCode: Record<string, string>)</li>
+                <li>Add client-side language switcher drop-down in the interview header workspace</li>
+                <li>Wire active language state into the LiveKit data channel channel sync mechanism for Python agent reflection</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-title-bar">
+              <h3 class="card-title">Complex DSA Visualizer Registry</h3>
+              <span class="priority-pill priority-high">High Priority</span>
+            </div>
+            <p class="card-desc">Construct dedicated frontend visualization modules for trees, stacks, matrices, and graphs. Candidates can view dynamic updates (e.g., node swaps, traversal order, array slicing) reacting to their code state directly in the problem panel.</p>
+            <div class="tech-specs">
+              <div class="specs-title">Implementation Specs</div>
+              <ul class="specs-list">
+                <li>Create StackVisualizer.tsx mapping to "valid-parentheses" problem to show pushes/pops</li>
+                <li>Create TreeVisualizer.tsx utilizing canvas or SVG nodes for BST and Binary Tree problems</li>
+                <li>Extend registry.tsx dynamically to lazy-load visualizations based on active question def ID</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
+
+  <script>
+    function switchTab(phaseId) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      
+      const targetPanel = document.getElementById(phaseId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+      
+      event.currentTarget.classList.add('active');
+    }
+  </script>
 </body>
 </html>
