@@ -30,6 +30,7 @@ import { AccessToken } from 'livekit-server-sdk';
 import { generateDynamicReport } from '../services/dynamic-report';
 import type { InterviewData } from '../services/dynamic-report';
 import { QUESTION_BANK, QuestionDef } from '../data/questions';
+import { QuestionSelectionService } from '../services/questionSelectionService';
 
 const router = express.Router();
 
@@ -195,10 +196,11 @@ router.get('/questions', (_req: Request, res: Response) => {
 });
 
 // ============================================================================
-// POST /start — Create a new interview session with random questions
+// POST /start — Create a new interview session with random or selected questions
 // ============================================================================
 // This is the main entry point for the interview flow. It:
 //   1. Selects 2 random questions from QUESTION_BANK (or fewer if the bank is smaller)
+//      OR uses the question selected by the user via the `questionId` parameter.
 //   2. Creates/overwrites a session document in MongoDB with:
 //      - The full list of selected questions
 //      - The first question as the "active" question
@@ -211,45 +213,54 @@ router.get('/questions', (_req: Request, res: Response) => {
 // the MVP — the upsert on findOneAndUpdate ensures the session is refreshed.
 router.post('/start', async (req: Request, res: Response) => {
   try {
-    // Select up to 2 random questions from the bank for this session
-    const allQuestions = selectRandomQuestions(QUESTION_BANK, Math.min(QUESTION_BANK.length, 2));
-    const numQuestionsToShow = allQuestions.length;
+    const { questionId } = req.body || {};
+    let sessionData;
+    let numQuestionsToShow;
 
-    // Fixed session ID — only one active interview at a time (MVP limitation)
-    const sessionId = "intervu-ai-interview";
+    if (questionId && QuestionSelectionService.isValidQuestion(questionId)) {
+      console.log(`[Dynamic Questions] Initializing custom session with selected question ID: ${questionId}`);
+      sessionData = QuestionSelectionService.prepareSessionData(questionId);
+      numQuestionsToShow = sessionData.questions.length;
+    } else {
+      // Select up to 2 random questions from the bank for this session
+      const allQuestions = selectRandomQuestions(QUESTION_BANK, Math.min(QUESTION_BANK.length, 2));
+      numQuestionsToShow = allQuestions.length;
 
-    // The first question becomes the active question shown to the candidate
-    const firstQuestion = allQuestions[0];
+      // Fixed session ID — only one active interview at a time (MVP limitation)
+      const sessionId = "intervu-ai-interview";
 
-    console.log(`[Dynamic Questions] Selected questions: ${allQuestions.map(q => q.title).join(', ')}`);
-    console.log(`[Dynamic Questions] Starting with: "${firstQuestion.title}"`);
+      // The first question becomes the active question shown to the candidate
+      const firstQuestion = allQuestions[0];
 
-    // Build the full session document to persist in MongoDB.
-    // `questions` stores ALL selected questions for later advancement.
-    // `question` is the currently active question the candidate sees.
-    // `code` is initialized with the starter code of the first question.
-    const sessionData = {
-      sessionId,
-      questions: allQuestions,
-      currentQuestionIndex: 0,
-      submissions: [],
-      question: {
-        title: firstQuestion.title,
-        description: firstQuestion.description,
-        examples: firstQuestion.examples,
-        starterCode: firstQuestion.starterCode,
+      console.log(`[Dynamic Questions] Selected questions: ${allQuestions.map(q => q.title).join(', ')}`);
+      console.log(`[Dynamic Questions] Starting with: "${firstQuestion.title}"`);
+
+      // Build the full session document to persist in MongoDB.
+      sessionData = {
+        sessionId,
+        questions: allQuestions,
+        currentQuestionIndex: 0,
+        submissions: [],
+        question: {
+          title: firstQuestion.title,
+          description: firstQuestion.description,
+          examples: firstQuestion.examples,
+          starterCode: firstQuestion.starterCode,
+          language: firstQuestion.language,
+          fileName: firstQuestion.fileName,
+          visualization: firstQuestion.visualization,
+          difficulty: firstQuestion.difficulty,
+          category: firstQuestion.category,
+          tags: firstQuestion.tags,
+        },
+        code: firstQuestion.starterCode,
         language: firstQuestion.language,
-        fileName: firstQuestion.fileName,
-        visualization: firstQuestion.visualization,
-        difficulty: firstQuestion.difficulty,
-        category: firstQuestion.category,
-        tags: firstQuestion.tags,
-      },
-      code: firstQuestion.starterCode,
-      language: firstQuestion.language,
-      transcript: [],
-      status: 'active'
-    };
+        transcript: [],
+        status: 'active' as const
+      };
+    }
+
+    const sessionId = sessionData.sessionId;
 
     // Upsert: create the session or replace the existing one (since sessionId is fixed)
     const session = await Session.findOneAndUpdate(
@@ -269,8 +280,8 @@ router.post('/start', async (req: Request, res: Response) => {
       question: session.question,
       totalQuestions: numQuestionsToShow,
       currentQuestionIndex: 0,
-      language: firstQuestion.language,
-      fileName: firstQuestion.fileName,
+      language: session.question.language,
+      fileName: session.question.fileName,
     };
     console.log(`[API /start] Sending response:`, JSON.stringify(response, null, 2));
 
