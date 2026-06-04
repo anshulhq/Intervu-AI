@@ -184,14 +184,15 @@ router.post('/save-analysis', async (req: Request, res: Response) => {
 // Returns a lightweight summary (id, title, difficulty, category, tags) for
 // each question. Used by the frontend landing page to show available topics.
 // Does NOT include starterCode or description to keep the payload small.
-router.get('/questions', (_req: Request, res: Response) => {
-  const questions = QUESTION_BANK.map(({ id, title, difficulty, category, tags }) => ({
-    id,
-    title,
-    difficulty,
-    category,
-    tags,
-  }));
+router.get('/questions', (req: Request, res: Response) => {
+  const detailed = req.query.detailed === 'true';
+  const questions = QUESTION_BANK.map((q) => {
+    if (detailed) {
+      return q;
+    }
+    const { id, title, difficulty, category, tags } = q;
+    return { id, title, difficulty, category, tags };
+  });
   res.json({ questions, total: questions.length });
 });
 
