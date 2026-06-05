@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Search,
   BookOpen,
@@ -13,7 +14,8 @@ import {
   ChevronRight,
   Play,
   Check,
-  AlertCircle
+  AlertCircle,
+  ArrowLeft
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -132,6 +134,17 @@ export default function QuestionSelector() {
       </div>
 
       <div className="relative z-10 flex-1 flex flex-col">
+        {/* Back Button */}
+        <div className="mb-6">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-500 hover:text-zinc-300 transition-colors duration-200 group w-fit"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
+            Back to Home
+          </Link>
+        </div>
+
         {/* Header */}
         <div className="mb-10 text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 mb-4">
