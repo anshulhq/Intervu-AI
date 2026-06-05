@@ -40,6 +40,7 @@ interface Question {
     language: string;
     fileName: string;
     visualization?: string;
+    difficulty?: string;
 }
 
 const INITIAL_QUESTION: Question = {
