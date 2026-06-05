@@ -669,10 +669,22 @@ export default function InterviewRoom({
                         <h2 className="text-2xl sm:text-4xl font-bold text-white mb-3 font-display">
                             Always Think out Loud during an Interview!
                         </h2>
-                        <p className="text-zinc-500 mb-4 leading-relaxed">
+                        <p className="text-zinc-500 mb-6 leading-relaxed">
                             Think out loud. This is a voice-based AI interview.
                             Your interviewer will guide you through the problem.
                         </p>
+                        {question.title && question.title !== "Loading..." && (
+                            <div className="mb-8 p-4 rounded-xl border border-zinc-800/80 bg-zinc-950/40 text-left flex items-start gap-3 max-w-sm mx-auto">
+                                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 text-emerald-400 mt-0.5">
+                                    <FileCode size={16} />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                    <span className="text-[9px] uppercase tracking-wider text-zinc-500 font-bold block mb-0.5">Selected Challenge</span>
+                                    <h3 className="text-sm font-semibold text-white truncate">{question.title}</h3>
+                                    <span className="inline-block px-2 py-0.5 mt-1 bg-zinc-900 border border-zinc-800 rounded text-[9px] text-zinc-400 capitalize font-medium">{question.difficulty}</span>
+                                </div>
+                            </div>
+                        )}
                         <div className="flex items-center justify-center gap-6 text-xs text-zinc-600 mb-10">
                             <span className="flex items-center gap-1.5">
                                 <Mic size={12} /> Voice-enabled
