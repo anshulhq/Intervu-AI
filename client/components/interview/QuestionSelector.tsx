@@ -276,7 +276,24 @@ export default function QuestionSelector() {
             {loading ? (
               // Loading skeleton states
               Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="h-28 bg-zinc-950/40 border border-zinc-900 animate-pulse rounded-xl" />
+                <div
+                  key={i}
+                  className="p-5 border border-zinc-900 bg-zinc-950/20 animate-pulse rounded-xl space-y-4 select-none"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-4 bg-zinc-900 rounded-full" />
+                    <div className="w-20 h-3 bg-zinc-900 rounded" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="w-2/3 h-4 bg-zinc-850 rounded" />
+                    <div className="w-full h-3 bg-zinc-900 rounded" />
+                  </div>
+                  <div className="flex gap-2 pt-2 border-t border-zinc-900/40">
+                    <div className="w-10 h-3.5 bg-zinc-900 rounded-full" />
+                    <div className="w-14 h-3.5 bg-zinc-900 rounded-full" />
+                    <div className="w-12 h-3.5 bg-zinc-900 rounded-full" />
+                  </div>
+                </div>
               ))
             ) : error ? (
               <div className="p-8 border border-red-500/20 bg-red-500/5 rounded-xl text-center space-y-3">
