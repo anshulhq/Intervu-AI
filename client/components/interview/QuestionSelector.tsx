@@ -15,7 +15,9 @@ import {
   Play,
   Check,
   AlertCircle,
-  ArrowLeft
+  ArrowLeft,
+  X,
+  SlidersHorizontal
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -174,45 +176,67 @@ export default function QuestionSelector() {
         {/* Filters and Search Bar */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-8">
           {/* Search Input */}
-          <div className="relative md:col-span-5">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+          <div className="relative md:col-span-5 flex items-center">
+            <Search className="absolute left-3.5 w-4 h-4 text-zinc-500 pointer-events-none" />
             <input
               type="text"
-              placeholder="Search by title, tag, or topic..."
+              placeholder="Search challenges by title, tags..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 outline-none text-sm transition-all duration-200 placeholder-zinc-600 text-white"
+              className="w-full pl-10 pr-10 py-2.5 bg-zinc-950/50 border border-zinc-800/80 rounded-xl focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 outline-none text-sm transition-all duration-200 placeholder-zinc-650 text-white"
             />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3.5 p-1 rounded-full hover:bg-zinc-900 text-zinc-400 hover:text-white transition-colors"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
 
-          {/* Difficulty Filter */}
-          <div className="md:col-span-3">
-            <select
-              value={selectedDifficulty}
-              onChange={(e) => setSelectedDifficulty(e.target.value)}
-              className="w-full px-4 py-2.5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 outline-none text-sm transition-all duration-200 text-white"
-            >
-              <option value="all">All Difficulties</option>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
+          {/* Difficulty Segmented Control */}
+          <div className="md:col-span-4 flex p-1 bg-zinc-950/50 border border-zinc-800/80 rounded-xl">
+            {["all", "easy", "medium", "hard"].map((diff) => (
+              <button
+                key={diff}
+                onClick={() => setSelectedDifficulty(diff)}
+                className={clsx(
+                  "flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold capitalize transition-all duration-300",
+                  selectedDifficulty === diff
+                    ? diff === "easy"
+                      ? "bg-emerald-500/10 text-emerald-450 border border-emerald-500/20 shadow-[0_0_12px_rgba(16,185,129,0.05)]"
+                      : diff === "medium"
+                      ? "bg-amber-500/10 text-amber-450 border border-amber-500/20 shadow-[0_0_12px_rgba(245,158,11,0.05)]"
+                      : diff === "hard"
+                      ? "bg-rose-500/10 text-rose-450 border border-rose-500/20 shadow-[0_0_12px_rgba(239,68,68,0.05)]"
+                      : "bg-zinc-800/80 text-white border border-zinc-700/60"
+                    : "text-zinc-550 hover:text-zinc-300 border border-transparent"
+                )}
+              >
+                {diff}
+              </button>
+            ))}
           </div>
 
           {/* Category Filter */}
-          <div className="md:col-span-4">
+          <div className="md:col-span-3 relative flex items-center">
+            <SlidersHorizontal className="absolute left-3.5 w-4 h-4 text-zinc-500 pointer-events-none" />
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full px-4 py-2.5 bg-zinc-950/80 border border-zinc-800/80 rounded-xl focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 outline-none text-sm transition-all duration-200 text-white capitalize"
+              className="w-full pl-10 pr-10 py-2.5 bg-zinc-950/50 border border-zinc-800/80 rounded-xl focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 outline-none text-sm transition-all duration-200 text-white capitalize appearance-none cursor-pointer"
             >
-              <option value="all">All Categories</option>
+              <option value="all">All Topics</option>
               {categories.filter(c => c !== "all").map((cat) => (
                 <option key={cat} value={cat}>
                   {cat}
                 </option>
               ))}
             </select>
+            <div className="absolute right-3.5 pointer-events-none border-l border-zinc-850 pl-2">
+              <ChevronRight className="w-4 h-4 text-zinc-500 rotate-90" />
+            </div>
           </div>
         </div>
 
