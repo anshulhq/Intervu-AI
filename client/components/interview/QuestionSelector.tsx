@@ -278,51 +278,80 @@ export default function QuestionSelector() {
                   key={q.id}
                   onClick={() => setSelectedQuestion(q)}
                   className={clsx(
-                    "group relative p-5 border rounded-xl cursor-pointer transition-all duration-300 bg-zinc-950/40 hover:bg-zinc-950/80 select-none",
+                    "group relative p-5 border rounded-xl cursor-pointer transition-all duration-350 bg-zinc-950/20 hover:bg-zinc-950/60 select-none hover:-translate-y-0.5",
                     selectedQuestion?.id === q.id
-                      ? "border-emerald-500/50 shadow-lg shadow-emerald-500/5 bg-zinc-950/90"
-                      : "border-zinc-800/60"
+                      ? q.difficulty === "easy"
+                        ? "border-emerald-500/30 shadow-[0_0_20px_-5px_rgba(16,185,129,0.12)] bg-zinc-950/80"
+                        : q.difficulty === "medium"
+                        ? "border-amber-500/30 shadow-[0_0_20px_-5px_rgba(245,158,11,0.12)] bg-zinc-950/80"
+                        : "border-rose-500/30 shadow-[0_0_20px_-5px_rgba(239,68,68,0.12)] bg-zinc-950/80"
+                      : "border-zinc-900/80 hover:border-zinc-800"
                   )}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="space-y-2">
+                  {/* Glowing left accent border */}
+                  <div
+                    className={clsx(
+                      "absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl transition-all duration-300",
+                      selectedQuestion?.id === q.id
+                        ? q.difficulty === "easy"
+                          ? "bg-emerald-500"
+                          : q.difficulty === "medium"
+                          ? "bg-amber-500"
+                          : "bg-rose-500"
+                        : "bg-transparent group-hover:bg-zinc-800"
+                    )}
+                  />
+
+                  <div className="flex items-start justify-between gap-4 pl-1">
+                    <div className="space-y-2.5">
                       <div className="flex flex-wrap items-center gap-2">
                         <span
                           className={clsx(
-                            "px-2.5 py-0.5 rounded text-[10px] font-semibold border uppercase tracking-wider",
+                            "px-2 py-0.5 rounded-full text-[9px] font-bold border uppercase tracking-wider font-mono",
                             getDifficultyColor(q.difficulty)
                           )}
                         >
                           {q.difficulty}
                         </span>
-                        <span className="text-[10px] text-zinc-500 font-medium">
+                        <span className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider font-mono">
                           {q.category}
                         </span>
                         {q.visualization && (
-                          <span className="text-[10px] text-teal-400 bg-teal-500/5 border border-teal-500/10 px-2 py-0.5 rounded font-mono">
-                            Interactive Viz
+                          <span className="inline-flex items-center gap-1 text-[9px] text-teal-400 bg-teal-500/5 border border-teal-500/15 px-2 py-0.5 rounded-full font-mono uppercase tracking-wider animate-pulse-slow">
+                            <Sparkles className="w-2.5 h-2.5" /> Interactive Viz
                           </span>
                         )}
                       </div>
-                      <h3 className="text-base font-semibold text-white group-hover:text-emerald-400 transition-colors duration-200">
+                      
+                      <h3 className={clsx(
+                        "text-base font-bold transition-colors duration-200",
+                        selectedQuestion?.id === q.id
+                          ? q.difficulty === "easy"
+                            ? "text-emerald-400"
+                            : q.difficulty === "medium"
+                            ? "text-amber-400"
+                            : "text-rose-400"
+                          : "text-white group-hover:text-emerald-400"
+                      )}>
                         {q.title}
                       </h3>
                       {/* Truncated description snippet */}
-                      <p className="text-xs text-zinc-500 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-zinc-500 line-clamp-2 leading-relaxed font-light">
                         {q.description}
                       </p>
                     </div>
-                    <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-zinc-800 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300">
-                      <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-emerald-400 transition-colors" />
+                    
+                    <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-zinc-900 group-hover:border-zinc-800 group-hover:bg-zinc-900/50 transition-all duration-300">
+                      <ChevronRight className="w-4 h-4 text-zinc-650 group-hover:text-zinc-300 transition-colors" />
                     </div>
                   </div>
 
                   {/* Horizontal pill list of tags */}
-                  <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-zinc-900/40">
+                  <div className="flex flex-wrap gap-1.5 mt-4 pt-3.5 border-t border-zinc-900/60 pl-1">
                     {q.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 bg-zinc-900/60 rounded text-[9px] text-zinc-500 border border-zinc-900 hover:border-zinc-800 transition-colors"
+                        className="px-2 py-0.5 bg-zinc-950/80 rounded-full text-[9px] text-zinc-550 border border-zinc-900/50 hover:border-zinc-800 transition-colors duration-200"
                       >
                         #{tag}
                       </span>
