@@ -173,6 +173,34 @@ export default function QuestionSelector() {
           </div>
         </div>
 
+        {/* Statistics Bar */}
+        {!loading && !error && questions.length > 0 && (
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 bg-zinc-950/20 border border-zinc-900/40 rounded-xl p-4">
+            <div className="flex flex-col gap-1 pl-3 border-l border-zinc-850">
+              <span className="text-[9px] text-zinc-500 font-bold uppercase tracking-wider font-mono">Total Registry</span>
+              <span className="text-sm font-bold text-white">{questions.length} Challenges</span>
+            </div>
+            <div className="flex flex-col gap-1 pl-3 border-l border-zinc-850">
+              <span className="text-[9px] text-emerald-500/80 font-bold uppercase tracking-wider font-mono">Easy Tier</span>
+              <span className="text-sm font-bold text-zinc-300">
+                {questions.filter((q) => q.difficulty === "easy").length} Problems
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pl-3 border-l border-zinc-850">
+              <span className="text-[9px] text-amber-500/80 font-bold uppercase tracking-wider font-mono">Medium Tier</span>
+              <span className="text-sm font-bold text-zinc-300">
+                {questions.filter((q) => q.difficulty === "medium").length} Problems
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pl-3 border-l border-zinc-850">
+              <span className="text-[9px] text-rose-500/80 font-bold uppercase tracking-wider font-mono">Hard Tier</span>
+              <span className="text-sm font-bold text-zinc-300">
+                {questions.filter((q) => q.difficulty === "hard").length} Problems
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Filters and Search Bar */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-8">
           {/* Search Input */}
