@@ -365,59 +365,62 @@ export default function QuestionSelector() {
           {/* Question Details View Panel (Right 5 Columns) */}
           <div className="lg:col-span-5 lg:sticky lg:top-6">
             {selectedQuestion ? (
-              <div className="relative rounded-xl border border-zinc-800/80 bg-zinc-950/70 backdrop-blur-sm overflow-hidden shadow-2xl flex flex-col max-h-[680px]">
+              <div className="relative rounded-2xl border border-zinc-900 bg-zinc-950/30 backdrop-blur-md overflow-hidden shadow-2xl flex flex-col max-h-[680px]">
+                {/* Visual Glow Indicator */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+                
                 {/* Details Header */}
-                <div className="p-6 border-b border-zinc-800/60">
-                  <div className="flex items-center gap-2 mb-2">
+                <div className="p-6 border-b border-zinc-900/60 bg-zinc-950/40">
+                  <div className="flex items-center gap-2.5 mb-3">
                     <span
                       className={clsx(
-                        "px-2.5 py-0.5 rounded text-[10px] font-semibold border uppercase tracking-wider",
+                        "px-2.5 py-0.5 rounded-full text-[9px] font-bold border uppercase tracking-wider font-mono",
                         getDifficultyColor(selectedQuestion.difficulty)
                       )}
                     >
                       {selectedQuestion.difficulty}
                     </span>
-                    <span className="text-xs text-zinc-400 font-semibold uppercase tracking-wider">
+                    <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider font-mono">
                       {selectedQuestion.category}
                     </span>
                   </div>
-                  <h2 className="text-xl font-bold text-white mb-2">
+                  <h2 className="text-xl font-bold text-white mb-3 tracking-tight font-display">
                     {selectedQuestion.title}
                   </h2>
-                  <div className="flex flex-wrap gap-2 text-xs text-zinc-500 font-medium">
-                    <span className="flex items-center gap-1">
-                      <Brain className="w-3.5 h-3.5 text-zinc-600" /> Coding Challenge
+                  <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-zinc-550 font-medium">
+                    <span className="flex items-center gap-1.5">
+                      <Brain className="w-3.5 h-3.5 text-zinc-650" /> Coding Assessment
                     </span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-zinc-600" /> ~25 min
+                    <span className="text-zinc-800">•</span>
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-zinc-650" /> ~25 Minutes
                     </span>
                   </div>
                 </div>
 
                 {/* Scrollable details content */}
-                <div className="p-6 overflow-y-auto space-y-5 flex-1 custom-scrollbar">
+                <div className="p-6 overflow-y-auto space-y-6 flex-1 custom-scrollbar bg-zinc-950/10">
                   <div>
-                    <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-2">
+                    <h4 className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest font-mono mb-2">
                       Problem Statement
                     </h4>
-                    <p className="text-sm text-zinc-400 leading-relaxed whitespace-pre-line">
+                    <p className="text-sm text-zinc-300 leading-relaxed font-light whitespace-pre-line">
                       {selectedQuestion.description}
                     </p>
                   </div>
 
                   {selectedQuestion.examples && selectedQuestion.examples.length > 0 && (
                     <div>
-                      <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-2">
-                        Examples
+                      <h4 className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest font-mono mb-2.5">
+                        Examples & Test Cases
                       </h4>
-                      <div className="space-y-2">
+                      <div className="space-y-2.5">
                         {selectedQuestion.examples.map((example, i) => (
                           <div
                             key={i}
-                            className="bg-[#0b0c0e]/80 border border-zinc-900 rounded-lg p-3 font-mono text-[11px] text-zinc-300 leading-relaxed whitespace-pre-wrap"
+                            className="bg-zinc-950/60 border border-zinc-900/80 rounded-xl p-3.5 font-mono text-[11px] text-zinc-300 leading-relaxed whitespace-pre-wrap hover:border-zinc-800 transition-colors"
                           >
-                            <span className="text-[10px] font-semibold text-emerald-400 block mb-1">
+                            <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-400 block mb-1.5 font-mono">
                               Example {i + 1}
                             </span>
                             {example}
