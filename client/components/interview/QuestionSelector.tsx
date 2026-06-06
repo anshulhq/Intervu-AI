@@ -431,14 +431,32 @@ export default function QuestionSelector() {
                   )}
 
                   <div>
-                    <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-2">
+                    <h4 className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest font-mono mb-2.5">
                       Starter Code Skeleton
                     </h4>
-                    <div className="bg-[#0d1117] border border-zinc-900 rounded-lg p-3.5 font-mono text-[11px] text-zinc-400 leading-relaxed overflow-x-auto select-none">
-                      <div className="text-[10px] text-zinc-600 mb-1">
-                        // {selectedQuestion.fileName} ({selectedQuestion.language})
+                    
+                    {/* Mock Editor Window */}
+                    <div className="rounded-xl border border-zinc-900 bg-[#08090c] overflow-hidden flex flex-col shadow-lg">
+                      {/* Editor Header / Title bar */}
+                      <div className="flex items-center justify-between px-4 py-2 bg-[#0b0c0f] border-b border-zinc-900 select-none">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-zinc-800" />
+                          <span className="w-2 h-2 rounded-full bg-zinc-800" />
+                          <span className="w-2 h-2 rounded-full bg-zinc-800" />
+                        </div>
+                        <div className="flex items-center gap-1.5 px-3 py-1 bg-[#090a0d] border-x border-t border-zinc-900 -mb-2 rounded-t-lg text-[10px] text-zinc-400 font-mono">
+                          <Code2 className="w-3 h-3 text-emerald-400" />
+                          <span>{selectedQuestion.fileName}</span>
+                        </div>
+                        <div className="text-[9px] text-zinc-600 font-mono">
+                          {selectedQuestion.language.toUpperCase()}
+                        </div>
                       </div>
-                      <pre className="whitespace-pre">{selectedQuestion.starterCode}</pre>
+                      
+                      {/* Editor Body */}
+                      <div className="p-4 font-mono text-[11px] text-zinc-400 leading-relaxed overflow-x-auto select-none bg-[#090a0e] custom-scrollbar max-h-60">
+                        <pre className="whitespace-pre text-left">{selectedQuestion.starterCode}</pre>
+                      </div>
                     </div>
                   </div>
                 </div>
