@@ -462,28 +462,33 @@ export default function QuestionSelector() {
                 </div>
 
                 {/* Sticky Action Footer */}
-                <div className="p-5 border-t border-zinc-900 bg-zinc-950/90 flex flex-col gap-3">
+                <div className="p-5 border-t border-zinc-900 bg-zinc-950/80 flex flex-col gap-3">
                   <button
                     onClick={() => handleStartInterview(selectedQuestion.id)}
                     disabled={startingSession}
-                    className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl text-sm transition-all duration-200 active:scale-98 disabled:opacity-50 flex items-center justify-center gap-2 group shadow-lg shadow-emerald-500/10 cursor-pointer"
+                    className="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-extrabold rounded-xl text-sm transition-all duration-300 active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2 group shadow-lg shadow-emerald-950/20 cursor-pointer"
                   >
                     {startingSession ? (
                       <>
                         <div className="w-4 h-4 rounded-full border-2 border-black border-t-transparent animate-spin" />
-                        Initializing Interview...
+                        Initializing AI Agent Room...
                       </>
                     ) : (
                       <>
                         <Play className="w-4 h-4 fill-black" />
                         Start Voice Interview
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-250" />
                       </>
                     )}
                   </button>
-                  <p className="text-[10px] text-zinc-500 text-center">
-                    Starting will initialize a LiveKit session with room &ldquo;intervu-ai-interview&rdquo;
-                  </p>
+                  
+                  {/* Warning/disclaimer banner */}
+                  <div className="flex items-start gap-2.5 p-3 rounded-xl bg-zinc-950/40 border border-zinc-900/60">
+                    <AlertCircle className="w-3.5 h-3.5 text-zinc-550 flex-shrink-0 mt-0.5 animate-pulse" />
+                    <p className="text-[10px] text-zinc-500 leading-relaxed text-left font-light">
+                      Starting this challenge will initialize a live, secure LiveKit audio channel under room <code className="text-zinc-400 font-mono">intervu-ai-interview</code>. Please ensure your microphone permissions are granted.
+                    </p>
+                  </div>
                 </div>
               </div>
             ) : (
