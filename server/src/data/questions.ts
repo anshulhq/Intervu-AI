@@ -273,6 +273,27 @@ class Solution {
     tags: ["array", "two-pointers", "math"],
     visualization: "rotate-array",
   },
+  {
+    id: "largest-rectangle-in-histogram",
+    title: "Largest Rectangle in Histogram",
+    description:
+      "Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.\n\nConstraints:\n- 1 <= heights.length <= 10^5\n- 0 <= heights[i] <= 10^4",
+    examples: [
+      "Input: heights = [2,1,5,6,2,3]\nOutput: 10\nExplanation: The largest rectangle is formed by bars of height 5 and 6, spanning from index 2 to 3, with a width of 2 and an area of 5 * 2 = 10.",
+      "Input: heights = [2,4]\nOutput: 4\nExplanation: The largest rectangle has an area of 4 (height = 4, width = 1).",
+    ],
+    starterCode: `class Solution {
+    public int largestRectangleArea(int[] heights) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "hard",
+    category: "Stacks",
+    tags: ["array", "stack", "monotonic-stack"],
+    visualization: "largest-rectangle-in-histogram",
+  },
 ];
 
 /**
