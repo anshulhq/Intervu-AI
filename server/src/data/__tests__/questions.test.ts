@@ -22,6 +22,21 @@ describe("Question Bank", () => {
     expect(rotateArray!.starterCode).toContain("public void rotate");
   });
 
+  it("should define largest-rectangle-in-histogram question with all required fields", () => {
+    const question = getQuestionById("largest-rectangle-in-histogram");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Largest Rectangle in Histogram");
+    expect(question!.difficulty).toBe("hard");
+    expect(question!.category).toBe("Stacks");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("stack");
+    expect(question!.tags).toContain("monotonic-stack");
+    expect(question!.visualization).toBe("largest-rectangle-in-histogram");
+    expect(question!.starterCode).toContain("public int largestRectangleArea");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
