@@ -3,12 +3,14 @@
 import React from "react";
 import { LinkedListVisualization } from "../LinkedListVisualization";
 import { RotateArrayVisualization } from "../RotateArrayVisualization";
+import { LargestRectangleVisualization } from "../LargestRectangleVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
 const registry: Record<string, VisualizationComponent> = {
   "linked-list-reversal": LinkedListVisualization,
   "rotate-array": RotateArrayVisualization,
+  "largest-rectangle-in-histogram": LargestRectangleVisualization,
 };
 
 /**
