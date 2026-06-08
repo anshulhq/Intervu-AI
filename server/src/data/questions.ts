@@ -294,6 +294,29 @@ class Solution {
     tags: ["array", "stack", "monotonic-stack"],
     visualization: "largest-rectangle-in-histogram",
   },
+  {
+    id: "unique-paths",
+    title: "Unique Paths",
+    description:
+      "There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.\n\nGiven the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.\n\nThe test cases are generated so that the answer will be less than or equal to 2 * 10^9.",
+    examples: [
+      "Input: m = 3, n = 7\nOutput: 28",
+      "Input: m = 3, n = 2\nOutput: 3\nExplanation: From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:\n1. Right -> Down -> Down\n2. Down -> Down -> Right\n3. Down -> Right -> Down",
+      "Input: m = 7, n = 3\nOutput: 28",
+      "Input: m = 3, n = 3\nOutput: 6",
+    ],
+    starterCode: `class Solution {
+    public int uniquePaths(int m, int n) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Dynamic Programming",
+    tags: ["dynamic-programming", "array", "math"],
+    visualization: "unique-paths",
+  },
 ];
 
 /**
