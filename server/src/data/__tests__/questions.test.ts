@@ -37,6 +37,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int largestRectangleArea");
   });
 
+  it("should define unique-paths question with all required fields", () => {
+    const question = getQuestionById("unique-paths");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Unique Paths");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Dynamic Programming");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("dynamic-programming");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("math");
+    expect(question!.visualization).toBe("unique-paths");
+    expect(question!.starterCode).toContain("public int uniquePaths");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
