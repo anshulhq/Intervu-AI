@@ -37,6 +37,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int largestRectangleArea");
   });
 
+  it("should define linked-list-cycle question with all required fields", () => {
+    const question = getQuestionById("linked-list-cycle");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Linked List Cycle");
+    expect(question!.difficulty).toBe("easy");
+    expect(question!.category).toBe("Linked Lists");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("linked-list");
+    expect(question!.tags).toContain("two-pointers");
+    expect(question!.tags).toContain("hash-table");
+    expect(question!.visualization).toBe("linked-list-cycle");
+    expect(question!.starterCode).toContain("public boolean hasCycle");
+  });
+
   it("should define unique-paths question with all required fields", () => {
     const question = getQuestionById("unique-paths");
     expect(question).toBeDefined();
