@@ -114,6 +114,39 @@ class Solution {
     visualization: "linked-list-reversal",
   },
   {
+    id: "linked-list-cycle",
+    title: "Linked List Cycle",
+    description:
+      "Given head, the head of a linked list, determine if the linked list has a cycle in it.\n\nThere is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.\n\nReturn true if there is a cycle in the linked list. Otherwise, return false.",
+    examples: [
+      "Input: head = [3,2,0,-4], pos = 1\nOutput: true\nExplanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).",
+      "Input: head = [1,2], pos = 0\nOutput: true\nExplanation: There is a cycle in the linked list, where the tail connects to the 0th node.",
+      "Input: head = [1], pos = -1\nOutput: false\nExplanation: There is no cycle in the linked list.",
+    ],
+    starterCode: `/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "easy",
+    category: "Linked Lists",
+    tags: ["linked-list", "two-pointers", "hash-table"],
+    visualization: "linked-list-cycle",
+  },
+  {
     id: "two-sum",
     title: "Two Sum",
     description:
