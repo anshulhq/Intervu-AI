@@ -2,6 +2,7 @@
 
 import React from "react";
 import { LinkedListVisualization } from "../LinkedListVisualization";
+import { LinkedListCycleVisualization } from "../LinkedListCycleVisualization";
 import { RotateArrayVisualization } from "../RotateArrayVisualization";
 import { LargestRectangleVisualization } from "../LargestRectangleVisualization";
 import { UniquePathsVisualization } from "../UniquePathsVisualization";
@@ -10,6 +11,7 @@ type VisualizationComponent = React.ComponentType;
 
 const registry: Record<string, VisualizationComponent> = {
   "linked-list-reversal": LinkedListVisualization,
+  "linked-list-cycle": LinkedListCycleVisualization,
   "rotate-array": RotateArrayVisualization,
   "largest-rectangle-in-histogram": LargestRectangleVisualization,
   "unique-paths": UniquePathsVisualization,
