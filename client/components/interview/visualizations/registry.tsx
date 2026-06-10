@@ -7,6 +7,7 @@ import { RotateArrayVisualization } from "../RotateArrayVisualization";
 import { LargestRectangleVisualization } from "../LargestRectangleVisualization";
 import { UniquePathsVisualization } from "../UniquePathsVisualization";
 import { PowVisualization } from "../PowVisualization";
+import { CountHoursCompleteDayVisualization } from "../CountHoursCompleteDayVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
@@ -17,6 +18,7 @@ const registry: Record<string, VisualizationComponent> = {
   "largest-rectangle-in-histogram": LargestRectangleVisualization,
   "unique-paths": UniquePathsVisualization,
   "pow-x-n": PowVisualization,
+  "count-hours-complete-day": CountHoursCompleteDayVisualization,
 };
 
 /**
