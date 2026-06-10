@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 11 questions spanning:
+ * Currently contains 12 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -75,6 +75,7 @@ export interface QuestionDef {
  *   - Stacks (Largest Rectangle in Histogram — with live visualization)
  *   - Binary Search (Binary Search)
  *   - Binary Search (Search in Rotated Sorted Array)
+ *   - Binary Search (Pow(x, n) — with live visualization)
  *   - Heaps & Priority Queues (Find Median from Data Stream)
  *   - Dynamic Programming (Unique Paths — with live visualization)
  */
@@ -352,6 +353,28 @@ public class Solution {
     category: "Dynamic Programming",
     tags: ["dynamic-programming", "array", "math"],
     visualization: "unique-paths",
+  },
+  {
+    id: "pow-x-n",
+    title: "Pow(x, n)",
+    description:
+      "Implement pow(x, n), which calculates x raised to the power n (i.e., x^n).\n\nConstraints:\n- Solve this without using any built-in exponentiation or library functions (like Math.pow in Java/JavaScript, pow in C/C++, or ** in Python/JavaScript).\n- -100.0 < x < 100.0\n- -2^31 <= n <= 2^31 - 1\n- n is an integer.\n- Either x is not zero or n > 0.\n- -10^4 <= x^n <= 10^4",
+    examples: [
+      "Input: x = 2.00000, n = 10\nOutput: 1024.00000",
+      "Input: x = 2.10000, n = 3\nOutput: 9.26100",
+      "Input: x = 2.00000, n = -2\nOutput: 0.25000\nExplanation: 2^-2 = 1/(2^2) = 1/4 = 0.25",
+    ],
+    starterCode: `class Solution {
+    public double myPow(double x, int n) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Binary Search",
+    tags: ["math", "binary-search", "recursion", "divide-and-conquer"],
+    visualization: "pow-x-n",
   },
 ];
 
