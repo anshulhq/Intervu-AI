@@ -6,6 +6,7 @@ import { LinkedListCycleVisualization } from "../LinkedListCycleVisualization";
 import { RotateArrayVisualization } from "../RotateArrayVisualization";
 import { LargestRectangleVisualization } from "../LargestRectangleVisualization";
 import { UniquePathsVisualization } from "../UniquePathsVisualization";
+import { PowVisualization } from "../PowVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
@@ -15,6 +16,7 @@ const registry: Record<string, VisualizationComponent> = {
   "rotate-array": RotateArrayVisualization,
   "largest-rectangle-in-histogram": LargestRectangleVisualization,
   "unique-paths": UniquePathsVisualization,
+  "pow-x-n": PowVisualization,
 };
 
 /**
