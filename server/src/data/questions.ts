@@ -376,6 +376,27 @@ public class Solution {
     tags: ["math", "binary-search", "recursion", "divide-and-conquer"],
     visualization: "pow-x-n",
   },
+  {
+    id: "count-hours-complete-day",
+    title: "Count Pairs That Form a Complete Day",
+    description:
+      "Given an integer array hours representing times in hours, return the number of pairs (i, j) such that i < j and hours[i] + hours[j] is a multiple of 24.\n\nA complete day is defined as a multiple of 24 hours. For example, 1 day is 24 hours, 2 days is 48 hours, etc. (i.e., (hours[i] + hours[j]) % 24 == 0).\n\nConstraints:\n- 1 <= hours.length <= 5 * 10^5\n- 1 <= hours[i] <= 10^9",
+    examples: [
+      "Input: hours = [12,12,30,24,24]\nOutput: 2\nExplanation: The pairs of indices that form a complete day are (0, 1) and (3, 4).",
+      "Input: hours = [72,48,24,3]\nOutput: 3\nExplanation: The pairs of indices that form a complete day are (0, 1), (0, 2), and (1, 2).",
+    ],
+    starterCode: `class Solution {
+    public long countCompleteDayPairs(int[] hours) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "hash-table", "math"],
+    visualization: "count-hours-complete-day",
+  },
 ];
 
 /**
