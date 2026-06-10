@@ -67,6 +67,22 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int uniquePaths");
   });
 
+  it("should define pow-x-n question with all required fields", () => {
+    const question = getQuestionById("pow-x-n");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Pow(x, n)");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Binary Search");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("math");
+    expect(question!.tags).toContain("binary-search");
+    expect(question!.tags).toContain("recursion");
+    expect(question!.tags).toContain("divide-and-conquer");
+    expect(question!.visualization).toBe("pow-x-n");
+    expect(question!.starterCode).toContain("public double myPow");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
