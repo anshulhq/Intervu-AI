@@ -418,7 +418,7 @@ public class Solution {
     fileName: "Solution.java",
     difficulty: "hard",
     category: "Arrays & Hashing",
-    tags: ["array", "hash-map"],
+    tags: ["array", "hash-table"],
     visualization: "first-missing-positive",
   },
 ];

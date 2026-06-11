@@ -98,6 +98,20 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public long countCompleteDayPairs");
   });
 
+  it("should define first-missing-positive question with all required fields", () => {
+    const question = getQuestionById("first-missing-positive");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("First Missing Positive");
+    expect(question!.difficulty).toBe("hard");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("hash-table");
+    expect(question!.visualization).toBe("first-missing-positive");
+    expect(question!.starterCode).toContain("public int firstMissingPositive");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
