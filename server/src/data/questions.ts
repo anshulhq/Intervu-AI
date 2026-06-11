@@ -398,6 +398,28 @@ public class Solution {
     tags: ["array", "hash-table", "math"],
     visualization: "count-hours-complete-day",
   },
+  {
+    id: "first-missing-positive",
+    title: "First Missing Positive",
+    description:
+      "Given an unsorted integer array nums, return the smallest missing positive integer.\n\nYou must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space.\n\nConstraints:\n- 1 <= nums.length <= 10^5\n- -2^31 <= nums[i] <= 2^31 - 1",
+    examples: [
+      "Input: nums = [1,2,0]\nOutput: 3\nExplanation: The numbers in the range [1,2] are all in the array.",
+      "Input: nums = [3,4,-1,1]\nOutput: 2\nExplanation: 1 is in the array but 2 is missing.",
+      "Input: nums = [7,8,9,11,12]\nOutput: 1\nExplanation: The smallest positive integer 1 is missing.",
+    ],
+    starterCode: `class Solution {
+    public int firstMissingPositive(int[] nums) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "hard",
+    category: "Arrays & Hashing",
+    tags: ["array", "hash-map"],
+    visualization: "first-missing-positive",
+  },
 ];
 
 /**
