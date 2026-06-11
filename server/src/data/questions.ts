@@ -72,6 +72,7 @@ export interface QuestionDef {
  *   - Arrays & Hashing (Rotate Array — with live visualization)
  *   - Arrays & Hashing (Subarray Sum Equals K)
  *   - Arrays & Hashing (Count Pairs That Form a Complete Day — with live visualization)
+ *   - Arrays & Hashing (First Missing Positive — with live visualization)
  *   - Stacks (Valid Parentheses)
  *   - Stacks (Largest Rectangle in Histogram — with live visualization)
  *   - Binary Search (Binary Search)
