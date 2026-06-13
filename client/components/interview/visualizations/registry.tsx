@@ -9,6 +9,7 @@ import { UniquePathsVisualization } from "../UniquePathsVisualization";
 import { PowVisualization } from "../PowVisualization";
 import { CountHoursCompleteDayVisualization } from "../CountHoursCompleteDayVisualization";
 import { FirstMissingPositiveVisualization } from "../FirstMissingPositiveVisualization";
+import { KthLargestElementVisualization } from "../KthLargestElementVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
@@ -21,6 +22,7 @@ const registry: Record<string, VisualizationComponent> = {
   "pow-x-n": PowVisualization,
   "count-hours-complete-day": CountHoursCompleteDayVisualization,
   "first-missing-positive": FirstMissingPositiveVisualization,
+  "kth-largest-element": KthLargestElementVisualization,
 };
 
 /**
