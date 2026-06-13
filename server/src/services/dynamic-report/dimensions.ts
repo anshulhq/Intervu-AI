@@ -27,6 +27,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Evaluate bracket-matching logic, stack invariant understanding, and whether they recognized LIFO applicability.',
       'Binary Search':
         'Evaluate ability to identify monotonic search space, correct mid-point calculation, and boundary condition handling.',
+      'Heaps & Priority Queues':
+        'Evaluate min-heap vs max-heap choice, understanding of k-size limitation, and identification of Heap vs Quickselect trade-offs.',
     },
   },
   {
@@ -44,6 +46,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Check if they achieved O(n) time, understood why stack gives O(1) per-element amortized, and recognized this is a "last unmatched" pattern.',
       'Binary Search':
         'Check if they achieved O(log n), handled the rotated-array pivot logic correctly, and identified which half is sorted.',
+      'Heaps & Priority Queues':
+        'Check if they achieved O(n log k) time complexity and O(k) space complexity, and understood why a heap is optimal for streaming data.',
     },
   },
   {
@@ -61,6 +65,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Check push/pop ordering, empty-stack handling, character-to-bracket mapping, and early termination on mismatches.',
       'Binary Search':
         'Check left/right boundary updates (avoid infinite loops), mid calculation overflow safety, and correct return values.',
+      'Heaps & Priority Queues':
+        'Check heap initialization, correct comparison function/ordering, and size-limit upkeep (polling when size exceeds k).',
     },
   },
   {
@@ -78,6 +84,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Did they test nested brackets, interleaved types, single character, empty string, odd-length strings?',
       'Binary Search':
         'Did they test target at boundaries, not-found case, single-element array, rotated vs. non-rotated?',
+      'Heaps & Priority Queues':
+        'Did they test with k equal to array length, k = 1, duplicate elements, negative values, and empty/small arrays?',
     },
   },
   {
@@ -95,6 +103,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'This is typically a quick problem (10-15 min). Lingering suggests conceptual gaps.',
       'Binary Search':
         'Standard binary search is fast (10 min). Rotated array variations may take 20-25 min — judge accordingly.',
+      'Heaps & Priority Queues':
+        'A heap-based solution should take 15-20 min. If they implemented Quickselect, judge their pacing accordingly.',
     },
   },
   {
@@ -112,6 +122,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Did they explain the stack invariant clearly? Did they connect the bracket-matching to LIFO intuitively?',
       'Binary Search':
         'Did they explain which half is sorted and why? Did they verbalize the elimination logic at each step?',
+      'Heaps & Priority Queues':
+        'Did they explain why a min-heap stores the largest elements? Did they verbalize how elements bubble up and down in the heap?',
     },
   },
 ];
