@@ -112,6 +112,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int firstMissingPositive");
   });
 
+  it("should define kth-largest-element question with all required fields", () => {
+    const question = getQuestionById("kth-largest-element");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Kth Largest Element");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Heaps & Priority Queues");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("heap");
+    expect(question!.tags).toContain("priority-queue");
+    expect(question!.visualization).toBe("kth-largest-element");
+    expect(question!.starterCode).toContain("public int findKthLargest");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();

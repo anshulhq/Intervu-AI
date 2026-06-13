@@ -421,6 +421,27 @@ public class Solution {
     tags: ["array", "hash-table"],
     visualization: "first-missing-positive",
   },
+  {
+    id: "kth-largest-element",
+    title: "Kth Largest Element",
+    description:
+      "Given an integer array `nums` and an integer `k`, return the `k`th largest element in the array.\n\nNote that it is the `k`th largest element in the sorted order, not the `k`th distinct element.\n\nConstraints:\n- 1 <= k <= nums.length <= 10^5\n- -10^4 <= nums[i] <= 10^4",
+    examples: [
+      "Input: nums = [3,2,1,5,6,4], k = 2\nOutput: 5",
+      "Input: nums = [3,2,3,1,2,4,5,5,6], k = 4\nOutput: 4",
+    ],
+    starterCode: `class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Heaps & Priority Queues",
+    tags: ["array", "divide-and-conquer", "sorting", "heap", "priority-queue", "quickselect"],
+    visualization: "kth-largest-element",
+  },
 ];
 
 /**
