@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 13 questions spanning:
+ * Currently contains 16 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -79,7 +79,9 @@ export interface QuestionDef {
  *   - Binary Search (Search in Rotated Sorted Array)
  *   - Binary Search (Pow(x, n) — with live visualization)
  *   - Heaps & Priority Queues (Find Median from Data Stream)
+ *   - Heaps & Priority Queues (Kth Largest Element — with live visualization)
  *   - Dynamic Programming (Unique Paths — with live visualization)
+ *   - Patterns (Print Diamond Pattern — with live visualization)
  */
 export const QUESTION_BANK: QuestionDef[] = [
   {
