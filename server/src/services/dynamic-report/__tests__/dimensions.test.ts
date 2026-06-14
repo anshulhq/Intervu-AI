@@ -36,6 +36,7 @@ describe('EVALUATION_DIMENSIONS', () => {
       'Stacks',
       'Binary Search',
       'Heaps & Priority Queues',
+      'Patterns',
     ];
 
     for (const dim of EVALUATION_DIMENSIONS) {
