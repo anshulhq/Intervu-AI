@@ -442,6 +442,28 @@ public class Solution {
     tags: ["array", "divide-and-conquer", "sorting", "heap", "priority-queue", "quickselect"],
     visualization: "kth-largest-element",
   },
+  {
+    id: "print-diamond-pattern",
+    title: "Print Diamond Pattern",
+    description:
+      "Given an integer `n` representing the number of rows in the upper half (including the widest middle row), print a diamond pattern using the `*` character.\n\nThe diamond consists of `2n - 1` rows: an upper triangle of `n` rows that widens and a lower triangle of `n - 1` rows that narrows. Each row is centered so that the middle row has `2n - 1` stars and no leading spaces.\n\nFor each row `i` in the upper half (1-indexed), print `n - i` leading spaces followed by `2i - 1` stars. The lower half mirrors the upper half in reverse.\n\nThe pattern should be printed to the console, one row per line.\n\nConstraints:\n- 1 <= n <= 100",
+    examples: [
+      "Input: n = 5\nOutput:\n    *\n   ***\n  *****\n *******\n*********\n *******\n  *****\n   ***\n    *",
+      "Input: n = 3\nOutput:\n  *\n ***\n*****\n ***\n  *",
+      "Input: n = 1\nOutput:\n*",
+    ],
+    starterCode: `class Solution {
+    public void printDiamond(int n) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "easy",
+    category: "Patterns",
+    tags: ["loops", "patterns", "strings", "simulation"],
+    visualization: "print-diamond-pattern",
+  },
 ];
 
 /**
