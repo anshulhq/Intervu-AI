@@ -127,6 +127,22 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int findKthLargest");
   });
 
+  it("should define print-diamond-pattern question with all required fields", () => {
+    const question = getQuestionById("print-diamond-pattern");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Print Diamond Pattern");
+    expect(question!.difficulty).toBe("easy");
+    expect(question!.category).toBe("Patterns");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("loops");
+    expect(question!.tags).toContain("patterns");
+    expect(question!.tags).toContain("strings");
+    expect(question!.tags).toContain("simulation");
+    expect(question!.visualization).toBe("print-diamond-pattern");
+    expect(question!.starterCode).toContain("public void printDiamond");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
