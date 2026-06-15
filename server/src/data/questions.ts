@@ -466,6 +466,43 @@ public class Solution {
     tags: ["loops", "patterns", "strings", "simulation"],
     visualization: "print-diamond-pattern",
   },
+  {
+    id: "level-order-traversal",
+    title: "Level Order Traversal",
+    description:
+      "Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).\n\nConstraints:\n- The number of nodes in the tree is in the range [0, 2000].\n- -1000 <= Node.val <= 1000",
+    examples: [
+      "Input: root = [3,9,20,null,null,15,7]\nOutput: [[3],[9,20],[15,7]]",
+      "Input: root = [1]\nOutput: [[1]]",
+      "Input: root = []\nOutput: []",
+    ],
+    starterCode: `/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Trees",
+    tags: ["tree", "breadth-first-search", "binary-tree", "queue"],
+    visualization: "level-order-traversal",
+  },
 ];
 
 /**

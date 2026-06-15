@@ -143,6 +143,22 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public void printDiamond");
   });
 
+  it("should define level-order-traversal question with all required fields", () => {
+    const question = getQuestionById("level-order-traversal");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Level Order Traversal");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Trees");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("tree");
+    expect(question!.tags).toContain("breadth-first-search");
+    expect(question!.tags).toContain("binary-tree");
+    expect(question!.tags).toContain("queue");
+    expect(question!.visualization).toBe("level-order-traversal");
+    expect(question!.starterCode).toContain("public List<List<Integer>> levelOrder");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
