@@ -11,6 +11,7 @@ import { CountHoursCompleteDayVisualization } from "../CountHoursCompleteDayVisu
 import { FirstMissingPositiveVisualization } from "../FirstMissingPositiveVisualization";
 import { KthLargestElementVisualization } from "../KthLargestElementVisualization";
 import { DiamondPatternVisualization } from "../DiamondPatternVisualization";
+import { LevelOrderTraversalVisualization } from "../LevelOrderTraversalVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
@@ -25,6 +26,7 @@ const registry: Record<string, VisualizationComponent> = {
   "first-missing-positive": FirstMissingPositiveVisualization,
   "kth-largest-element": KthLargestElementVisualization,
   "print-diamond-pattern": DiamondPatternVisualization,
+  "level-order-traversal": LevelOrderTraversalVisualization,
 };
 
 /**
