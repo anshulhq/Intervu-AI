@@ -503,6 +503,27 @@ class Solution {
     tags: ["tree", "breadth-first-search", "binary-tree", "queue"],
     visualization: "level-order-traversal",
   },
+  {
+    id: "container-with-most-water",
+    title: "Container With Most Water",
+    description:
+      "You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `i`th line are `(i, 0)` and `(i, height[i])`.\n\nFind two lines that together with the x-axis form a container, such that the container contains the most water.\n\nReturn the maximum amount of water a container can store.\n\nNotice that you may not slant the container.\n\nConstraints:\n- n == height.length\n- 2 <= n <= 10^5\n- 0 <= height[i] <= 10^4",
+    examples: [
+      "Input: height = [1,8,6,2,5,4,8,3,7]\nOutput: 49\nExplanation: The vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (shaded area) the container can contain is 49.",
+      "Input: height = [1,1]\nOutput: 1",
+    ],
+    starterCode: `class Solution {
+    public int maxArea(int[] height) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "two-pointers", "greedy"],
+    visualization: "container-with-most-water",
+  },
 ];
 
 /**
