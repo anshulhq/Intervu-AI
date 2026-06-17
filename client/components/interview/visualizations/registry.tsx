@@ -13,6 +13,7 @@ import { KthLargestElementVisualization } from "../KthLargestElementVisualizatio
 import { DiamondPatternVisualization } from "../DiamondPatternVisualization";
 import { LevelOrderTraversalVisualization } from "../LevelOrderTraversalVisualization";
 import { ContainerMostWaterVisualization } from "../ContainerMostWaterVisualization";
+import { InvertBinaryTreeVisualization } from "../InvertBinaryTreeVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
@@ -29,6 +30,7 @@ const registry: Record<string, VisualizationComponent> = {
   "print-diamond-pattern": DiamondPatternVisualization,
   "level-order-traversal": LevelOrderTraversalVisualization,
   "container-with-most-water": ContainerMostWaterVisualization,
+  "invert-binary-tree": InvertBinaryTreeVisualization,
 };
 
 /**
