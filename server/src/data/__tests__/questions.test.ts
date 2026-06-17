@@ -174,6 +174,22 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int maxArea");
   });
 
+  it("should define invert-binary-tree question with all required fields", () => {
+    const question = getQuestionById("invert-binary-tree");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Invert Binary Tree");
+    expect(question!.difficulty).toBe("easy");
+    expect(question!.category).toBe("Trees");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("tree");
+    expect(question!.tags).toContain("depth-first-search");
+    expect(question!.tags).toContain("binary-tree");
+    expect(question!.tags).toContain("recursion");
+    expect(question!.visualization).toBe("invert-binary-tree");
+    expect(question!.starterCode).toContain("public TreeNode invertTree");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();

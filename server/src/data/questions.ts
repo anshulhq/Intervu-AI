@@ -524,6 +524,43 @@ class Solution {
     tags: ["array", "two-pointers", "greedy"],
     visualization: "container-with-most-water",
   },
+  {
+    id: "invert-binary-tree",
+    title: "Invert Binary Tree",
+    description:
+      "Given the root of a binary tree, invert the tree, and return its root.\n\nConstraints:\n- The number of nodes in the tree is in the range [0, 100].\n- -100 <= Node.val <= 100",
+    examples: [
+      "Input: root = [4,2,7,1,3,6,9]\nOutput: [4,7,2,9,6,3,1]",
+      "Input: root = [2,1,3]\nOutput: [2,3,1]",
+      "Input: root = []\nOutput: []",
+    ],
+    starterCode: `/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "easy",
+    category: "Trees",
+    tags: ["tree", "depth-first-search", "breadth-first-search", "binary-tree", "recursion"],
+    visualization: "invert-binary-tree",
+  },
 ];
 
 /**
