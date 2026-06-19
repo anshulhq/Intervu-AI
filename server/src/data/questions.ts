@@ -583,6 +583,37 @@ class Solution {
     tags: ["array", "divide-and-conquer", "sorting", "merge-sort"],
     visualization: "count-inversions",
   },
+  {
+    id: "reorder-linked-list",
+    title: "Reorder Linked List",
+    description:
+      "You are given the head of a singly linked-list. The list can be represented as:\n\n`L0 → L1 → … → Ln - 1 → Ln`\n\nReorder the list to be on the following form:\n\n`L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …`\n\nYou may not modify the values in the list's nodes. Only nodes themselves may be changed.",
+    examples: [
+      "Input: head = [1,2,3,4]\nOutput: [1,4,2,3]",
+      "Input: head = [1,2,3,4,5]\nOutput: [1,5,2,4,3]",
+    ],
+    starterCode: `/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public void reorderList(ListNode head) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Linked Lists",
+    tags: ["linked-list", "two-pointers", "stack", "recursion"],
+    visualization: "reorder-linked-list",
+  },
 ];
 
 /**
