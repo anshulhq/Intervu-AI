@@ -561,6 +561,28 @@ class Solution {
     tags: ["tree", "depth-first-search", "breadth-first-search", "binary-tree", "recursion"],
     visualization: "invert-binary-tree",
   },
+  {
+    id: "count-inversions",
+    title: "Count Inversions",
+    description:
+      "Given an array of integers `arr`, find the inversion count of the array.\n\nTwo elements `arr[i]` and `arr[j]` form an inversion if `arr[i] > arr[j]` and `i < j`.\n\nInversion Count for an array indicates how far (or close) the array is from being sorted. If the array is already sorted, then the inversion count is 0. If the array is sorted in reverse order, then the inversion count is at its maximum.\n\nConstraints:\n- 1 <= arr.length <= 10^5\n- 1 <= arr[i] <= 10^6",
+    examples: [
+      "Input: arr = [2, 4, 1, 3, 5]\nOutput: 3\nExplanation: The sequence [2, 4, 1, 3, 5] has 3 inversions: (2, 1), (4, 1), and (4, 3).",
+      "Input: arr = [2, 3, 4, 5, 6]\nOutput: 0\nExplanation: The array is already sorted, so there are no inversions.",
+      "Input: arr = [10, 10, 10]\nOutput: 0\nExplanation: All elements are identical, so there are no inversions.",
+    ],
+    starterCode: `class Solution {
+    public long inversionCount(long[] arr) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "divide-and-conquer", "sorting", "merge-sort"],
+    visualization: "count-inversions",
+  },
 ];
 
 /**
