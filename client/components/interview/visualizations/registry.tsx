@@ -15,6 +15,7 @@ import { LevelOrderTraversalVisualization } from "../LevelOrderTraversalVisualiz
 import { ContainerMostWaterVisualization } from "../ContainerMostWaterVisualization";
 import { InvertBinaryTreeVisualization } from "../InvertBinaryTreeVisualization";
 import { CountInversionsVisualization } from "../CountInversionsVisualization";
+import { ReorderListVisualization } from "../ReorderListVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
@@ -33,6 +34,7 @@ const registry: Record<string, VisualizationComponent> = {
   "container-with-most-water": ContainerMostWaterVisualization,
   "invert-binary-tree": InvertBinaryTreeVisualization,
   "count-inversions": CountInversionsVisualization,
+  "reorder-linked-list": ReorderListVisualization,
 };
 
 /**
