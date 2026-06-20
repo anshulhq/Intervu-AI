@@ -614,6 +614,27 @@ class Solution {
     tags: ["linked-list", "two-pointers", "stack", "recursion"],
     visualization: "reorder-linked-list",
   },
+  {
+    id: "median-of-two-sorted-arrays",
+    title: "Median of Two Sorted Arrays",
+    description:
+      "Given two sorted arrays `nums1` and `nums2` of size `m` and `n` respectively, return the median of the two sorted arrays.\n\nThe overall run time complexity should be O(log (m+n)).\n\nConstraints:\n- nums1.length == m\n- nums2.length == n\n- 0 <= m <= 1000\n- 0 <= n <= 1000\n- 1 <= m + n <= 2000\n- -10^6 <= nums1[i], nums2[i] <= 10^6",
+    examples: [
+      "Input: nums1 = [1,3], nums2 = [2]\nOutput: 2.00000\nExplanation: merged array = [1,2,3] and median is 2.",
+      "Input: nums1 = [1,2], nums2 = [3,4]\nOutput: 2.50000\nExplanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.",
+    ],
+    starterCode: `class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "hard",
+    category: "Binary Search",
+    tags: ["array", "binary-search", "divide-and-conquer"],
+    visualization: "median-two-sorted-arrays",
+  },
 ];
 
 /**
