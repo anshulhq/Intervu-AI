@@ -221,7 +221,8 @@ The report renders on a dedicated results page with a score donut, radar chart, 
 │   │   ├── InterviewRoom.tsx # Main interview orchestrator
 │   │   ├── CodeEditor.tsx    # Monaco Editor wrapper
 │   │   ├── VoiceComponent.tsx # Transcript + mic controls
-│   │   └── LinkedListVisualization.tsx
+│   │   ├── LinkedListVisualization.tsx
+│   │   └── MedianTwoSortedArraysVisualization.tsx
 │   └── components/CustomIcons.tsx
 │
 ├── server/                   # Express backend
