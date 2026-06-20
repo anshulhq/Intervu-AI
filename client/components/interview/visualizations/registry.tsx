@@ -16,6 +16,7 @@ import { ContainerMostWaterVisualization } from "../ContainerMostWaterVisualizat
 import { InvertBinaryTreeVisualization } from "../InvertBinaryTreeVisualization";
 import { CountInversionsVisualization } from "../CountInversionsVisualization";
 import { ReorderListVisualization } from "../ReorderListVisualization";
+import { MedianTwoSortedArraysVisualization } from "../MedianTwoSortedArraysVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
@@ -35,6 +36,7 @@ const registry: Record<string, VisualizationComponent> = {
   "invert-binary-tree": InvertBinaryTreeVisualization,
   "count-inversions": CountInversionsVisualization,
   "reorder-linked-list": ReorderListVisualization,
+  "median-two-sorted-arrays": MedianTwoSortedArraysVisualization,
 };
 
 /**
