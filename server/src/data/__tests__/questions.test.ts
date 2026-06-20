@@ -222,6 +222,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public void reorderList");
   });
 
+  it("should define median-of-two-sorted-arrays question with all required fields", () => {
+    const question = getQuestionById("median-of-two-sorted-arrays");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Median of Two Sorted Arrays");
+    expect(question!.difficulty).toBe("hard");
+    expect(question!.category).toBe("Binary Search");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("binary-search");
+    expect(question!.tags).toContain("divide-and-conquer");
+    expect(question!.visualization).toBe("median-two-sorted-arrays");
+    expect(question!.starterCode).toContain("public double findMedianSortedArrays");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
