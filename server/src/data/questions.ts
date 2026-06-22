@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 17 questions spanning:
+ * Currently contains 18 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -73,6 +73,7 @@ export interface QuestionDef {
  *   - Arrays & Hashing (Subarray Sum Equals K)
  *   - Arrays & Hashing (Count Pairs That Form a Complete Day — with live visualization)
  *   - Arrays & Hashing (First Missing Positive — with live visualization)
+ *   - Arrays & Hashing (Sort Colors / Dutch National Flag — with live visualization)
  *   - Stacks (Valid Parentheses)
  *   - Stacks (Largest Rectangle in Histogram — with live visualization)
  *   - Binary Search (Binary Search)
@@ -635,6 +636,27 @@ class Solution {
     category: "Binary Search",
     tags: ["array", "binary-search", "divide-and-conquer"],
     visualization: "median-two-sorted-arrays",
+  },
+  {
+    id: "sort-colors",
+    title: "Sort Colors (Dutch National Flag)",
+    description:
+      "Given an array `nums` with `n` objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.\n\nWe will use the integers `0`, `1`, and `2` to represent the color red, white, and blue, respectively.\n\nYou must solve this problem without using the library's sort function.\n\nConstraints:\n- `n == nums.length`\n- `1 <= n <= 300`\n- `nums[i]` is either `0`, `1`, or `2`.\n\nFollow up: Could you come up with a one-pass algorithm using only constant extra space?",
+    examples: [
+      "Input: nums = [2,0,2,1,1,0]\nOutput: [0,0,1,1,2,2]",
+      "Input: nums = [2,0,1]\nOutput: [0,1,2]",
+    ],
+    starterCode: `class Solution {
+    public void sortColors(int[] nums) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "two-pointers", "sorting"],
+    visualization: "dutch-national-flag",
   },
 ];
 

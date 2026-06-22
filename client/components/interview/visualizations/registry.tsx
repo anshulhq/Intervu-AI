@@ -17,6 +17,7 @@ import { InvertBinaryTreeVisualization } from "../InvertBinaryTreeVisualization"
 import { CountInversionsVisualization } from "../CountInversionsVisualization";
 import { ReorderListVisualization } from "../ReorderListVisualization";
 import { MedianTwoSortedArraysVisualization } from "../MedianTwoSortedArraysVisualization";
+import { DutchNationalFlagVisualization } from "../DutchNationalFlagVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
@@ -37,6 +38,7 @@ const registry: Record<string, VisualizationComponent> = {
   "count-inversions": CountInversionsVisualization,
   "reorder-linked-list": ReorderListVisualization,
   "median-two-sorted-arrays": MedianTwoSortedArraysVisualization,
+  "dutch-national-flag": DutchNationalFlagVisualization,
 };
 
 /**

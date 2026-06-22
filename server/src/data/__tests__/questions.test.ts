@@ -237,6 +237,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public double findMedianSortedArrays");
   });
 
+  it("should define sort-colors question with all required fields", () => {
+    const question = getQuestionById("sort-colors");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Sort Colors (Dutch National Flag)");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("two-pointers");
+    expect(question!.tags).toContain("sorting");
+    expect(question!.visualization).toBe("dutch-national-flag");
+    expect(question!.starterCode).toContain("public void sortColors");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
