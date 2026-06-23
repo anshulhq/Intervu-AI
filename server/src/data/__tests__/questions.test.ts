@@ -266,6 +266,22 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public List<List<Integer>> threeSum");
   });
 
+  it("should define merge-k-sorted-lists question with all required fields", () => {
+    const question = getQuestionById("merge-k-sorted-lists");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Merge k Sorted Lists");
+    expect(question!.difficulty).toBe("hard");
+    expect(question!.category).toBe("Linked Lists");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("linked-list");
+    expect(question!.tags).toContain("divide-and-conquer");
+    expect(question!.tags).toContain("heap");
+    expect(question!.tags).toContain("priority-queue");
+    expect(question!.tags).toContain("merge-sort");
+    expect(question!.starterCode).toContain("public ListNode mergeKLists");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
