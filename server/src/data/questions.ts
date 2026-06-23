@@ -682,6 +682,37 @@ class Solution {
     category: "Arrays & Hashing",
     tags: ["array", "two-pointers", "sorting"],
   },
+  {
+    id: "merge-k-sorted-lists",
+    title: "Merge k Sorted Lists",
+    description:
+      "You are given an array of `k` linked-lists `lists`, each linked-list is sorted in ascending order.\n\nMerge all the linked-lists into one sorted linked-list and return it.",
+    examples: [
+      "Input: lists = [[1,4,5],[1,3,4],[2,6]]\nOutput: [1,1,2,3,4,4,5,6]\nExplanation: The linked-lists are:\n[\n  1->4->5,\n  1->3->4,\n  2->6\n]\nmerging them into one sorted list:\n1->1->2->3->4->4->5->6",
+      "Input: lists = []\nOutput: []",
+      "Input: lists = [[]]\nOutput: []",
+    ],
+    starterCode: `/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "hard",
+    category: "Linked Lists",
+    tags: ["linked-list", "divide-and-conquer", "heap", "priority-queue", "merge-sort"],
+  },
 ];
 
 /**
