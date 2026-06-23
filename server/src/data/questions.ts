@@ -65,10 +65,11 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 18 questions spanning:
+ * Currently contains 24 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
+ *   - Arrays & Hashing (Three Sum)
  *   - Arrays & Hashing (Rotate Array — with live visualization)
  *   - Arrays & Hashing (Subarray Sum Equals K)
  *   - Arrays & Hashing (Count Pairs That Form a Complete Day — with live visualization)
@@ -657,6 +658,29 @@ class Solution {
     category: "Arrays & Hashing",
     tags: ["array", "two-pointers", "sorting"],
     visualization: "dutch-national-flag",
+  },
+  {
+    id: "three-sum",
+    title: "Three Sum",
+    description:
+      "Given an integer array `nums`, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.\n\nNotice that the solution set must not contain duplicate triplets.",
+    examples: [
+      "Input: nums = [-1,0,1,2,-1,-4]\nOutput: [[-1,-1,2],[-1,0,1]]\nExplanation: \nnums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.\nnums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.\nnums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.\nThe distinct triplets are [-1,0,1] and [-1,-1,2].\nNotice that the order of the output and the order of the triplets does not matter.",
+      "Input: nums = [0,1,1]\nOutput: []\nExplanation: The only possible triplet does not sum up to 0.",
+      "Input: nums = [0,0,0]\nOutput: [[0,0,0]]\nExplanation: The only possible triplet sums up to 0.",
+    ],
+    starterCode: `import java.util.*;
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "two-pointers", "sorting"],
   },
 ];
 

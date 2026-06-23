@@ -252,6 +252,20 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public void sortColors");
   });
 
+  it("should define three-sum question with all required fields", () => {
+    const question = getQuestionById("three-sum");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Three Sum");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("two-pointers");
+    expect(question!.tags).toContain("sorting");
+    expect(question!.starterCode).toContain("public List<List<Integer>> threeSum");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
