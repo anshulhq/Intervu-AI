@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 24 questions spanning:
+ * Currently contains 25 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -76,6 +76,7 @@ export interface QuestionDef {
  *   - Arrays & Hashing (First Missing Positive — with live visualization)
  *   - Arrays & Hashing (Sort Colors / Dutch National Flag — with live visualization)
  *   - Stacks (Valid Parentheses)
+ *   - Stacks (Longest Valid Parentheses)
  *   - Stacks (Largest Rectangle in Histogram — with live visualization)
  *   - Binary Search (Binary Search)
  *   - Binary Search (Search in Rotated Sorted Array)
@@ -712,6 +713,27 @@ class Solution {
     difficulty: "hard",
     category: "Linked Lists",
     tags: ["linked-list", "divide-and-conquer", "heap", "priority-queue", "merge-sort"],
+  },
+  {
+    id: "longest-valid-parentheses",
+    title: "Longest Valid Parentheses",
+    description:
+      "Given a string containing just the characters '(' and ')', return the length of the longest valid (well-formed) parentheses substring.\n\nConstraints:\n- 0 <= s.length <= 3 * 10^4\n- s[i] is '(' or ')'",
+    examples: [
+      'Input: s = "(()"\nOutput: 2\nExplanation: The longest valid parentheses substring is "()".',
+      'Input: s = ")()())"\nOutput: 4\nExplanation: The longest valid parentheses substring is "()()".',
+      'Input: s = ""\nOutput: 0',
+    ],
+    starterCode: `class Solution {
+    public int longestValidParentheses(String s) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "hard",
+    category: "Stacks",
+    tags: ["string", "stack", "dynamic-programming"],
   },
 ];
 
