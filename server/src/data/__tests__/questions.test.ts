@@ -282,6 +282,20 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public ListNode mergeKLists");
   });
 
+  it("should define longest-valid-parentheses question with all required fields", () => {
+    const question = getQuestionById("longest-valid-parentheses");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Longest Valid Parentheses");
+    expect(question!.difficulty).toBe("hard");
+    expect(question!.category).toBe("Stacks");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("string");
+    expect(question!.tags).toContain("stack");
+    expect(question!.tags).toContain("dynamic-programming");
+    expect(question!.starterCode).toContain("public int longestValidParentheses");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
