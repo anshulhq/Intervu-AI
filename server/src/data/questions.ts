@@ -735,6 +735,27 @@ class Solution {
     category: "Stacks",
     tags: ["string", "stack", "dynamic-programming"],
   },
+  {
+    id: "minimum-window-substring",
+    title: "Minimum Window Substring",
+    description:
+      "Given two strings `s` and `t` of lengths `m` and `n` respectively, return the minimum window substring of `s` such that every character in `t` (including duplicates) is included in the window. If there is no such substring, return the empty string `\"\"`.\n\nThe testcases will be generated such that the answer is unique.",
+    examples: [
+      'Input: s = "ADOBECODEBANC", t = "ABC"\nOutput: "BANC"\nExplanation: The minimum window substring "BANC" includes \'A\', \'B\', and \'C\' from string t.',
+      'Input: s = "a", t = "a"\nOutput: "a"\nExplanation: The entire string s is the minimum window.',
+      'Input: s = "a", t = "aa"\nOutput: ""\nExplanation: Both \'a\'s from t must be included in the window.\nSince the largest window of s only has one \'a\', return empty string.'
+    ],
+    starterCode: `class Solution {
+    public String minWindow(String s, String t) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "hard",
+    category: "Sliding Window",
+    tags: ["string", "sliding-window", "hash-table", "two-pointers"],
+  },
 ];
 
 /**
