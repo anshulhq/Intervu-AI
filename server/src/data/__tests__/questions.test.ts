@@ -308,6 +308,7 @@ describe("Question Bank", () => {
     expect(question!.tags).toContain("sliding-window");
     expect(question!.tags).toContain("hash-table");
     expect(question!.tags).toContain("two-pointers");
+    expect(question!.visualization).toBe("minimum-window-substring");
     expect(question!.starterCode).toContain("public String minWindow");
   });
 
