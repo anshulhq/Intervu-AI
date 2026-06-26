@@ -18,6 +18,7 @@ import { CountInversionsVisualization } from "../CountInversionsVisualization";
 import { ReorderListVisualization } from "../ReorderListVisualization";
 import { MedianTwoSortedArraysVisualization } from "../MedianTwoSortedArraysVisualization";
 import { DutchNationalFlagVisualization } from "../DutchNationalFlagVisualization";
+import { MinimumWindowSubstringVisualization } from "../MinimumWindowSubstringVisualization";
 
 type VisualizationComponent = React.ComponentType;
 
@@ -39,6 +40,7 @@ const registry: Record<string, VisualizationComponent> = {
   "reorder-linked-list": ReorderListVisualization,
   "median-two-sorted-arrays": MedianTwoSortedArraysVisualization,
   "dutch-national-flag": DutchNationalFlagVisualization,
+  "minimum-window-substring": MinimumWindowSubstringVisualization,
 };
 
 /**
