@@ -296,6 +296,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int longestValidParentheses");
   });
 
+  it("should define minimum-window-substring question with all required fields", () => {
+    const question = getQuestionById("minimum-window-substring");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Minimum Window Substring");
+    expect(question!.difficulty).toBe("hard");
+    expect(question!.category).toBe("Sliding Window");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("string");
+    expect(question!.tags).toContain("sliding-window");
+    expect(question!.tags).toContain("hash-table");
+    expect(question!.tags).toContain("two-pointers");
+    expect(question!.starterCode).toContain("public String minWindow");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
