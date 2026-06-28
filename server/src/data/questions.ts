@@ -758,6 +758,26 @@ class Solution {
     tags: ["string", "sliding-window", "hash-table", "two-pointers"],
     visualization: "minimum-window-substring",
   },
+  {
+    id: "trapping-rain-water",
+    title: "Trapping Rain Water",
+    description:
+      "Given `n` non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\n\nConstraints:\n- `n == height.length`\n- `1 <= n <= 2 * 10^4`\n- `0 <= height[i] <= 10^5`",
+    examples: [
+      "Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]\nOutput: 6\nExplanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.",
+      "Input: height = [4,2,0,3,2,5]\nOutput: 9",
+    ],
+    starterCode: `class Solution {
+    public int trap(int[] height) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "hard",
+    category: "Arrays & Hashing",
+    tags: ["array", "two-pointers", "dynamic-programming", "stack", "monotonic-stack"],
+  },
 ];
 
 /**
