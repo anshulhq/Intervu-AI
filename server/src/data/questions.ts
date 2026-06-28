@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 27 questions spanning:
+ * Currently contains 28 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -75,6 +75,7 @@ export interface QuestionDef {
  *   - Arrays & Hashing (Count Pairs That Form a Complete Day — with live visualization)
  *   - Arrays & Hashing (First Missing Positive — with live visualization)
  *   - Arrays & Hashing (Sort Colors / Dutch National Flag — with live visualization)
+ *   - Arrays & Hashing (Trapping Rain Water)
  *   - Stacks (Valid Parentheses)
  *   - Stacks (Longest Valid Parentheses)
  *   - Stacks (Largest Rectangle in Histogram — with live visualization)
