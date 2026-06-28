@@ -312,6 +312,22 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public String minWindow");
   });
 
+  it("should define trapping-rain-water question with all required fields", () => {
+    const question = getQuestionById("trapping-rain-water");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Trapping Rain Water");
+    expect(question!.difficulty).toBe("hard");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("two-pointers");
+    expect(question!.tags).toContain("dynamic-programming");
+    expect(question!.tags).toContain("stack");
+    expect(question!.tags).toContain("monotonic-stack");
+    expect(question!.starterCode).toContain("public int trap");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
