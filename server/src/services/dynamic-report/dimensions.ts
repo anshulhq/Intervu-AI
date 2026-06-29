@@ -31,6 +31,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Evaluate min-heap vs max-heap choice, understanding of k-size limitation, and identification of Heap vs Quickselect trade-offs.',
       'Patterns':
         'Evaluate ability to decompose the shape into upper and lower triangles, recognize the mirror symmetry, and derive the per-row spaces/stars formula from the row index before coding.',
+      'Graphs':
+        'Evaluate graph representation reasoning, DFS vs BFS choice, connectivity/components understanding, and whether they identified bounds and visited-state tracking.',
     },
   },
   {
@@ -52,6 +54,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Check if they achieved O(n log k) time complexity and O(k) space complexity, and understood why a heap is optimal for streaming data.',
       'Patterns':
         'Check if they identified the O(n) row-by-row approach with the arithmetic relationship (spaces = n - i, stars = 2i - 1) rather than a brute-force nested accumulation, and correctly bounded the total row count.',
+      'Graphs':
+        'Check if they achieved optimal O(m * n) time complexity, and correctly analyzed the space complexity including call-stack or queue usage.',
     },
   },
   {
@@ -73,6 +77,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Check heap initialization, correct comparison function/ordering, and size-limit upkeep (polling when size exceeds k).',
       'Patterns':
         'Check correct loop bounds (1 to 2n - 1), accurate space/star counts, off-by-one errors when mirroring the lower half, and proper newline handling per row.',
+      'Graphs':
+        'Check grid coordinate bounds validation, visited state tracking to prevent cycles, correct directional traversal, and handling of empty grids.',
     },
   },
   {
@@ -94,6 +100,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Did they test with k equal to array length, k = 1, duplicate elements, negative values, and empty/small arrays?',
       'Patterns':
         'Did they test n = 1 (single star), verify left-right and top-bottom symmetry, and trace a couple of rows by hand to confirm the space/star counts?',
+      'Graphs':
+        'Did they test with empty grid, grid with all land, grid with all water, single cell grid, and multiple disconnected components?',
     },
   },
   {
@@ -115,6 +123,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'A heap-based solution should take 15-20 min. If they implemented Quickselect, judge their pacing accordingly.',
       'Patterns':
         'A straightforward pattern problem should take 10-15 min. Lingering often indicates confusion over the space/star formula or mirror logic.',
+      'Graphs':
+        'A clean graph search solution (DFS/BFS) should take 15-20 min. Discussing trade-offs or optimizations should fit within the timeframe.',
     },
   },
   {
@@ -136,6 +146,8 @@ export const EVALUATION_DIMENSIONS: DimensionDefinition[] = [
         'Did they explain why a min-heap stores the largest elements? Did they verbalize how elements bubble up and down in the heap?',
       'Patterns':
         'Did they explain the spaces/stars formula before coding? Did they verbalize the mirror symmetry between the upper and lower triangles?',
+      'Graphs':
+        'Did they explain how visited nodes are tracked? Did they verbalize the connectivity search logic (DFS/BFS) clearly?',
     },
   },
 ];
