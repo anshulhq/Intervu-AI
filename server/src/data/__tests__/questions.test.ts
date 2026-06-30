@@ -344,6 +344,20 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int numIslands");
   });
 
+  it("should define merge-intervals question with all required fields", () => {
+    const question = getQuestionById("merge-intervals");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Merge Intervals");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("sorting");
+    expect(question!.tags).toContain("intervals");
+    expect(question!.starterCode).toContain("public int[][] merge");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
