@@ -799,6 +799,26 @@ class Solution {
     category: "Graphs",
     tags: ["depth-first-search", "breadth-first-search", "union-find", "matrix", "graphs"],
   },
+  {
+    id: "merge-intervals",
+    title: "Merge Intervals",
+    description:
+      "Given an array of `intervals` where `intervals[i] = [start_i, end_i]`, merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.\n\nConstraints:\n- 1 <= intervals.length <= 10^4\n- intervals[i].length == 2\n- 0 <= start_i <= end_i <= 10^4",
+    examples: [
+      "Input: intervals = [[1,3],[2,6],[8,10],[15,18]]\nOutput: [[1,6],[8,10],[15,18]]\nExplanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].",
+      "Input: intervals = [[1,4],[4,5]]\nOutput: [[1,5]]\nExplanation: Intervals [1,4] and [4,5] are considered overlapping.",
+    ],
+    starterCode: `class Solution {
+    public int[][] merge(int[][] intervals) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "sorting", "intervals"],
+  },
 ];
 
 /**
