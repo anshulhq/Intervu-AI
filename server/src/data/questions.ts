@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 30 questions spanning:
+ * Currently contains 31 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -837,6 +837,24 @@ class Solution {
 }`,
     language: "java",
     fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Graphs",
+    tags: ["graphs", "depth-first-search", "breadth-first-search", "topological-sort"],
+  },
+  {
+    id: "course-schedule-python",
+    title: "Course Schedule (Python)",
+    description:
+      "There are a total of `numCourses` courses you have to take, labeled from `0` to `numCourses - 1`. You are given an array `prerequisites` where `prerequisites[i] = [ai, bi]` indicates that you must take course `bi` first if you want to take course `ai`.\n\nFor example, the pair `[0, 1]`, indicates that to take course `0` you have to first take course `1`.\n\nReturn `true` if you can finish all courses. Otherwise, return `false`.\n\nConstraints:\n- `1 <= numCourses <= 2000`\n- `0 <= prerequisites.length <= 5000`\n- `prerequisites[i].length == 2`\n- `0 <= ai, bi < numCourses`\n- All the pairs prerequisites[i] are unique.",
+    examples: [
+      "Input: numCourses = 2, prerequisites = [[1,0]]\nOutput: true\nExplanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0. So it is possible.",
+      "Input: numCourses = 2, prerequisites = [[1,0],[0,1]]\nOutput: false\nExplanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible."
+    ],
+    starterCode: `class Solution:
+    def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
+        pass`,
+    language: "python",
+    fileName: "solution.py",
     difficulty: "medium",
     category: "Graphs",
     tags: ["graphs", "depth-first-search", "breadth-first-search", "topological-sort"],
