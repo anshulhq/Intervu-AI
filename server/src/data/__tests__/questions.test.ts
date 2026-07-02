@@ -373,6 +373,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public boolean canFinish");
   });
 
+  it("should define course-schedule-python question with all required fields", () => {
+    const question = getQuestionById("course-schedule-python");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Course Schedule (Python)");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Graphs");
+    expect(question!.language).toBe("python");
+    expect(question!.fileName).toBe("solution.py");
+    expect(question!.tags).toContain("graphs");
+    expect(question!.tags).toContain("depth-first-search");
+    expect(question!.tags).toContain("breadth-first-search");
+    expect(question!.tags).toContain("topological-sort");
+    expect(question!.starterCode).toContain("def canFinish");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
