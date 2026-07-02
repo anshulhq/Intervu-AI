@@ -358,6 +358,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int[][] merge");
   });
 
+  it("should define course-schedule question with all required fields", () => {
+    const question = getQuestionById("course-schedule");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Course Schedule");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Graphs");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("graphs");
+    expect(question!.tags).toContain("depth-first-search");
+    expect(question!.tags).toContain("breadth-first-search");
+    expect(question!.tags).toContain("topological-sort");
+    expect(question!.starterCode).toContain("public boolean canFinish");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
