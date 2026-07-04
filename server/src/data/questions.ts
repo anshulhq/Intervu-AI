@@ -859,6 +859,27 @@ class Solution {
     category: "Graphs",
     tags: ["graphs", "depth-first-search", "breadth-first-search", "topological-sort"],
   },
+  {
+    id: "longest-substring-without-repeating-characters",
+    title: "Longest Substring Without Repeating Characters",
+    description:
+      "Given a string `s`, find the length of the longest substring without repeating characters.\n\nConstraints:\n- `0 <= s.length <= 5 * 10^4`\n- `s` consists of English letters, digits, symbols and spaces.",
+    examples: [
+      "Input: s = \"abcabcbb\"\nOutput: 3\nExplanation: The answer is \"abc\", with the length of 3.",
+      "Input: s = \"bbbbb\"\nOutput: 1\nExplanation: The answer is \"b\", with the length of 1.",
+      "Input: s = \"pwwkew\"\nOutput: 3\nExplanation: The answer is \"wke\", with the length of 3.\nNotice that the answer must be a substring, \"pwke\" is a subsequence and not a substring."
+    ],
+    starterCode: `class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Sliding Window",
+    tags: ["string", "sliding-window", "hash-table", "two-pointers"],
+  },
 ];
 
 /**
