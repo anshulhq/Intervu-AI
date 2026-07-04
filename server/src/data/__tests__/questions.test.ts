@@ -388,6 +388,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("def canFinish");
   });
 
+  it("should define longest-substring-without-repeating-characters question with all required fields", () => {
+    const question = getQuestionById("longest-substring-without-repeating-characters");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Longest Substring Without Repeating Characters");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Sliding Window");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("string");
+    expect(question!.tags).toContain("sliding-window");
+    expect(question!.tags).toContain("hash-table");
+    expect(question!.tags).toContain("two-pointers");
+    expect(question!.starterCode).toContain("public int lengthOfLongestSubstring");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
