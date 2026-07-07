@@ -881,6 +881,41 @@ class Solution {
     category: "Sliding Window",
     tags: ["string", "sliding-window", "hash-table", "two-pointers"],
   },
+  {
+    id: "validate-binary-search-tree",
+    title: "Validate Binary Search Tree",
+    description:
+      "Given the root of a binary tree, determine if it is a valid binary search tree (BST).\n\nA valid BST is defined as follows:\n- The left subtree of a node contains only nodes with keys less than the node's key.\n- The right subtree of a node contains only nodes with keys greater than the node's key.\n- Both the left and right subtrees must also be binary search trees.",
+    examples: [
+      "Input: root = [2,1,3]\nOutput: true",
+      "Input: root = [5,1,4,null,null,3,6]\nOutput: false\nExplanation: The root node's value is 5, but its right child's value is 4.",
+    ],
+    starterCode: `/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Trees",
+    tags: ["tree", "depth-first-search", "binary-search-tree", "binary-tree"],
+  },
 ];
 
 /**
