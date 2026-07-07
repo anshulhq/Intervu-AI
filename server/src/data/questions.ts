@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 32 questions spanning:
+ * Currently contains 33 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -91,6 +91,7 @@ export interface QuestionDef {
  *   - Sliding Window (Minimum Window Substring — with live visualization)
  *   - Sliding Window (Longest Substring Without Repeating Characters)
  *   - Graphs (Course Schedule)
+ *   - Trees (Validate Binary Search Tree)
  */
 export const QUESTION_BANK: QuestionDef[] = [
   {
