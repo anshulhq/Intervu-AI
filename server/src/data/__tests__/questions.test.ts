@@ -403,6 +403,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int lengthOfLongestSubstring");
   });
 
+  it("should define validate-binary-search-tree question with all required fields", () => {
+    const question = getQuestionById("validate-binary-search-tree");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Validate Binary Search Tree");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Trees");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("tree");
+    expect(question!.tags).toContain("depth-first-search");
+    expect(question!.tags).toContain("binary-search-tree");
+    expect(question!.tags).toContain("binary-tree");
+    expect(question!.starterCode).toContain("public boolean isValidBST");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
