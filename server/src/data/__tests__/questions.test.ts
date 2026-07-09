@@ -418,6 +418,20 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public boolean isValidBST");
   });
 
+  it("should define best-time-to-buy-and-sell-stock question with all required fields", () => {
+    const question = getQuestionById("best-time-to-buy-and-sell-stock");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Best Time to Buy and Sell Stock");
+    expect(question!.difficulty).toBe("easy");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("dynamic-programming");
+    expect(question!.tags).toContain("sliding-window");
+    expect(question!.starterCode).toContain("public int maxProfit");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
