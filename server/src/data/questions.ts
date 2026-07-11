@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 35 questions spanning:
+ * Currently contains 36 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -79,6 +79,7 @@ export interface QuestionDef {
  *   - Arrays & Hashing (Merge Intervals)
  *   - Arrays & Hashing (Best Time to Buy and Sell Stock)
  *   - Arrays & Hashing (Product of Array Except Self)
+ *   - Arrays & Hashing (Product of Array Except Self — Python)
  *   - Stacks (Valid Parentheses)
  *   - Stacks (Longest Valid Parentheses)
  *   - Stacks (Largest Rectangle in Histogram — with live visualization)
@@ -955,6 +956,24 @@ class Solution {
 }`,
     language: "java",
     fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "prefix-sum"],
+  },
+  {
+    id: "product-of-array-except-self-python",
+    title: "Product of Array Except Self (Python)",
+    description:
+      "Given an integer array `nums`, return an array `answer` such that `answer[i]` is equal to the product of all the elements of `nums` except `nums[i]`.\n\nThe product of any prefix or suffix of `nums` is guaranteed to fit in a 32-bit integer.\n\nYou must write an algorithm that runs in `O(n)` time and without using the division operation.\n\nConstraints:\n- `2 <= nums.length <= 10^5`\n- `-30 <= nums[i] <= 30`\n- The product of any prefix or suffix of `nums` is guaranteed to fit in a 32-bit integer.\n\nFollow up: Can you solve the problem in `O(1)` extra space complexity? (The output array does not count as extra space for space complexity analysis.)",
+    examples: [
+      "Input: nums = [1,2,3,4]\nOutput: [24,12,8,6]",
+      "Input: nums = [-1,1,0,-3,3]\nOutput: [0,0,9,0,0]"
+    ],
+    starterCode: `class Solution:
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
+        pass`,
+    language: "python",
+    fileName: "solution.py",
     difficulty: "medium",
     category: "Arrays & Hashing",
     tags: ["array", "prefix-sum"],

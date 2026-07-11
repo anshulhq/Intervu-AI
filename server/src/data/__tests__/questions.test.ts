@@ -445,6 +445,19 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int[] productExceptSelf");
   });
 
+  it("should define product-of-array-except-self-python question with all required fields", () => {
+    const question = getQuestionById("product-of-array-except-self-python");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Product of Array Except Self (Python)");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("python");
+    expect(question!.fileName).toBe("solution.py");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("prefix-sum");
+    expect(question!.starterCode).toContain("def productExceptSelf");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
