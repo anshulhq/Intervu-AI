@@ -458,6 +458,36 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("def productExceptSelf");
   });
 
+  it("should define group-anagrams question with all required fields", () => {
+    const question = getQuestionById("group-anagrams");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Group Anagrams");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("hash-map");
+    expect(question!.tags).toContain("string");
+    expect(question!.tags).toContain("sorting");
+    expect(question!.starterCode).toContain("public List<List<String>> groupAnagrams");
+  });
+
+  it("should define group-anagrams-python question with all required fields", () => {
+    const question = getQuestionById("group-anagrams-python");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Group Anagrams (Python)");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("python");
+    expect(question!.fileName).toBe("solution.py");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("hash-map");
+    expect(question!.tags).toContain("string");
+    expect(question!.tags).toContain("sorting");
+    expect(question!.starterCode).toContain("def groupAnagrams");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
