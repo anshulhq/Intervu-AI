@@ -978,6 +978,29 @@ class Solution {
     category: "Arrays & Hashing",
     tags: ["array", "prefix-sum"],
   },
+  {
+    id: "group-anagrams",
+    title: "Group Anagrams",
+    description:
+      "Given an array of strings `strs`, group the anagrams together. You can return the answer in any order.\n\nAn Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.\n\nConstraints:\n- 1 <= strs.length <= 10^4\n- 0 <= strs[i].length <= 100\n- strs[i] consists of lowercase English letters.",
+    examples: [
+      'Input: strs = ["eat","tea","tan","ate","nat","bat"]\nOutput: [["bat"],["nat","tan"],["ate","eat","tea"]]\nExplanation:\n- There is no other word in strs that can be rearranged to form "bat", so it remains in a group of 1.\n- "nat" and "tan" can be rearranged to form each other, so they are grouped together.\n- "ate", "eat", and "tea" can be rearranged to form each other, so they are grouped together.',
+      'Input: strs = [""]\nOutput: [[""]]',
+      'Input: strs = ["a"]\nOutput: [["a"]]',
+    ],
+    starterCode: `import java.util.*;
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "hash-map", "string", "sorting"],
+  },
 ];
 
 /**
