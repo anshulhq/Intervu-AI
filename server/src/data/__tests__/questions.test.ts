@@ -488,6 +488,21 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("def groupAnagrams");
   });
 
+  it("should define climbing-stairs question with all required fields", () => {
+    const question = getQuestionById("climbing-stairs");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Climbing Stairs");
+    expect(question!.difficulty).toBe("easy");
+    expect(question!.category).toBe("Dynamic Programming");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("dynamic-programming");
+    expect(question!.tags).toContain("math");
+    expect(question!.tags).toContain("recursion");
+    expect(question!.tags).toContain("memoization");
+    expect(question!.starterCode).toContain("public int climbStairs");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
