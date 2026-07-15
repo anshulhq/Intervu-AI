@@ -1022,6 +1022,26 @@ class Solution {
     category: "Arrays & Hashing",
     tags: ["array", "hash-map", "string", "sorting"],
   },
+  {
+    id: "climbing-stairs",
+    title: "Climbing Stairs",
+    description:
+      "You are climbing a staircase. It takes `n` steps to reach the top.\n\nEach time you can either climb `1` or `2` steps. In how many distinct ways can you climb to the top?\n\nConstraints:\n- `1 <= n <= 45`",
+    examples: [
+      "Input: n = 2\nOutput: 2\nExplanation: There are two ways to climb to the top.\n1. 1 step + 1 step\n2. 2 steps",
+      "Input: n = 3\nOutput: 3\nExplanation: There are three ways to climb to the top.\n1. 1 step + 1 step + 1 step\n2. 1 step + 2 steps\n3. 2 steps + 1 step"
+    ],
+    starterCode: `class Solution {
+    public int climbStairs(int n) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "easy",
+    category: "Dynamic Programming",
+    tags: ["dynamic-programming", "math", "recursion", "memoization"],
+  },
 ];
 
 /**
