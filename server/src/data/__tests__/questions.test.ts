@@ -517,6 +517,20 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public TreeNode lowestCommonAncestor");
   });
 
+  it("should define lowest-common-ancestor-python question with all required fields", () => {
+    const question = getQuestionById("lowest-common-ancestor-python");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Lowest Common Ancestor of a Binary Tree (Python)");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Trees");
+    expect(question!.language).toBe("python");
+    expect(question!.fileName).toBe("solution.py");
+    expect(question!.tags).toContain("tree");
+    expect(question!.tags).toContain("depth-first-search");
+    expect(question!.tags).toContain("binary-tree");
+    expect(question!.starterCode).toContain("def lowestCommonAncestor");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
