@@ -503,6 +503,20 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int climbStairs");
   });
 
+  it("should define lowest-common-ancestor question with all required fields", () => {
+    const question = getQuestionById("lowest-common-ancestor");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Lowest Common Ancestor of a Binary Tree");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Trees");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("tree");
+    expect(question!.tags).toContain("depth-first-search");
+    expect(question!.tags).toContain("binary-tree");
+    expect(question!.starterCode).toContain("public TreeNode lowestCommonAncestor");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
