@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 42 questions spanning:
+ * Currently contains 43 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -83,6 +83,7 @@ export interface QuestionDef {
  *   - Arrays & Hashing (Group Anagrams)
  *   - Arrays & Hashing (Group Anagrams — Python)
  *   - Arrays & Hashing (Longest Consecutive Sequence)
+ *   - Arrays & Hashing (Longest Consecutive Sequence — Python)
  *   - Stacks (Valid Parentheses)
  *   - Stacks (Longest Valid Parentheses)
  *   - Stacks (Largest Rectangle in Histogram — with live visualization)
@@ -1118,6 +1119,24 @@ class Solution:
 }`,
     language: "java",
     fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "hash-set"],
+  },
+  {
+    id: "longest-consecutive-sequence-python",
+    title: "Longest Consecutive Sequence (Python)",
+    description:
+      "Given an unsorted array of integers `nums`, return the length of the longest consecutive elements sequence.\n\nYou must write an algorithm that runs in `O(n)` time.\n\nConstraints:\n- `0 <= nums.length <= 10^5`\n- `-10^9 <= nums[i] <= 10^9`",
+    examples: [
+      "Input: nums = [100,4,200,1,3,2]\nOutput: 4\nExplanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.",
+      "Input: nums = [0,3,7,2,5,8,4,6,0,1]\nOutput: 9",
+    ],
+    starterCode: `class Solution:
+    def longestConsecutive(self, nums: list[int]) -> int:
+        pass`,
+    language: "python",
+    fileName: "solution.py",
     difficulty: "medium",
     category: "Arrays & Hashing",
     tags: ["array", "hash-set"],
