@@ -531,6 +531,32 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("def lowestCommonAncestor");
   });
 
+  it("should define longest-consecutive-sequence question with all required fields", () => {
+    const question = getQuestionById("longest-consecutive-sequence");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Longest Consecutive Sequence");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("hash-set");
+    expect(question!.starterCode).toContain("public int longestConsecutive");
+  });
+
+  it("should define longest-consecutive-sequence-python question with all required fields", () => {
+    const question = getQuestionById("longest-consecutive-sequence-python");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Longest Consecutive Sequence (Python)");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Arrays & Hashing");
+    expect(question!.language).toBe("python");
+    expect(question!.fileName).toBe("solution.py");
+    expect(question!.tags).toContain("array");
+    expect(question!.tags).toContain("hash-set");
+    expect(question!.starterCode).toContain("def longestConsecutive");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
