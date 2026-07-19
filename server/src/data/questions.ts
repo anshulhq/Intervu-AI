@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 45 questions spanning:
+ * Currently contains 46 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -85,6 +85,7 @@ export interface QuestionDef {
  *   - Arrays & Hashing (Longest Consecutive Sequence)
  *   - Arrays & Hashing (Longest Consecutive Sequence — Python)
  *   - Arrays & Hashing (Maximum Subarray)
+ *   - Arrays & Hashing (Maximum Subarray — Python)
  *   - Stacks (Valid Parentheses)
  *   - Stacks (Longest Valid Parentheses)
  *   - Stacks (Largest Rectangle in Histogram — with live visualization)
@@ -1159,6 +1160,25 @@ class Solution:
 }`,
     language: "java",
     fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "dynamic-programming", "divide-and-conquer"],
+  },
+  {
+    id: "maximum-subarray-python",
+    title: "Maximum Subarray (Python)",
+    description:
+      "Given an integer array `nums`, find the subarray with the largest sum, and return its sum.\n\nA **subarray** is a contiguous non-empty sequence of elements within an array.\n\nConstraints:\n- `1 <= nums.length <= 10^5`\n- `-10^4 <= nums[i] <= 10^4`",
+    examples: [
+      "Input: nums = [-2,1,-3,4,-1,2,1,-5,4]\nOutput: 6\nExplanation: The subarray [4,-1,2,1] has the largest sum 6.",
+      "Input: nums = [1]\nOutput: 1\nExplanation: The subarray [1] has the largest sum 1.",
+      "Input: nums = [5,4,-1,7,8]\nOutput: 23\nExplanation: The subarray [5,4,-1,7,8] has the largest sum 23."
+    ],
+    starterCode: `class Solution:
+    def maxSubArray(self, nums: list[int]) -> int:
+        pass`,
+    language: "python",
+    fileName: "solution.py",
     difficulty: "medium",
     category: "Arrays & Hashing",
     tags: ["array", "dynamic-programming", "divide-and-conquer"],
