@@ -1141,6 +1141,27 @@ class Solution:
     category: "Arrays & Hashing",
     tags: ["array", "hash-set"],
   },
+  {
+    id: "maximum-subarray",
+    title: "Maximum Subarray",
+    description:
+      "Given an integer array `nums`, find the subarray with the largest sum, and return its sum.\n\nA **subarray** is a contiguous non-empty sequence of elements within an array.\n\nConstraints:\n- `1 <= nums.length <= 10^5`\n- `-10^4 <= nums[i] <= 10^4`",
+    examples: [
+      "Input: nums = [-2,1,-3,4,-1,2,1,-5,4]\nOutput: 6\nExplanation: The subarray [4,-1,2,1] has the largest sum 6.",
+      "Input: nums = [1]\nOutput: 1\nExplanation: The subarray [1] has the largest sum 1.",
+      "Input: nums = [5,4,-1,7,8]\nOutput: 23\nExplanation: The subarray [5,4,-1,7,8] has the largest sum 23."
+    ],
+    starterCode: `class Solution {
+    public int maxSubArray(int[] nums) {
+        
+    }
+}`,
+    language: "java",
+    fileName: "Solution.java",
+    difficulty: "medium",
+    category: "Arrays & Hashing",
+    tags: ["array", "dynamic-programming", "divide-and-conquer"],
+  },
 ];
 
 /**
