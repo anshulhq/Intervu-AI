@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 43 questions spanning:
+ * Currently contains 45 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -84,6 +84,7 @@ export interface QuestionDef {
  *   - Arrays & Hashing (Group Anagrams — Python)
  *   - Arrays & Hashing (Longest Consecutive Sequence)
  *   - Arrays & Hashing (Longest Consecutive Sequence — Python)
+ *   - Arrays & Hashing (Maximum Subarray)
  *   - Stacks (Valid Parentheses)
  *   - Stacks (Longest Valid Parentheses)
  *   - Stacks (Largest Rectangle in Histogram — with live visualization)
