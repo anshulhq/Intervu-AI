@@ -65,7 +65,7 @@ export interface QuestionDef {
  * array and picks the first N entries. This ensures every candidate gets a different
  * question order, reducing the chance of leaked answers being useful.
  *
- * Currently contains 46 questions spanning:
+ * Currently contains 48 questions spanning:
  *   - Linked Lists (Reverse Linked List — with live visualization)
  *   - Linked Lists (Linked List Cycle — with live visualization)
  *   - Arrays & Hashing (Two Sum)
@@ -101,6 +101,8 @@ export interface QuestionDef {
  *   - Sliding Window (Minimum Window Substring — with live visualization)
  *   - Sliding Window (Longest Substring Without Repeating Characters)
  *   - Graphs (Course Schedule)
+ *   - Graphs (Word Search)
+ *   - Graphs (Word Search — Python)
  *   - Trees (Validate Binary Search Tree)
  *   - Trees (Lowest Common Ancestor of a Binary Tree)
  *   - Trees (Lowest Common Ancestor of a Binary Tree — Python)
