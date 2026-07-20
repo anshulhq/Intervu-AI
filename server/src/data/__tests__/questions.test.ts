@@ -585,6 +585,36 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("def maxSubArray");
   });
 
+  it("should define word-search question with all required fields", () => {
+    const question = getQuestionById("word-search");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Word Search");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Graphs");
+    expect(question!.language).toBe("java");
+    expect(question!.fileName).toBe("Solution.java");
+    expect(question!.tags).toContain("matrix");
+    expect(question!.tags).toContain("backtracking");
+    expect(question!.tags).toContain("graphs");
+    expect(question!.tags).toContain("depth-first-search");
+    expect(question!.starterCode).toContain("public boolean exist");
+  });
+
+  it("should define word-search-python question with all required fields", () => {
+    const question = getQuestionById("word-search-python");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Word Search (Python)");
+    expect(question!.difficulty).toBe("medium");
+    expect(question!.category).toBe("Graphs");
+    expect(question!.language).toBe("python");
+    expect(question!.fileName).toBe("solution.py");
+    expect(question!.tags).toContain("matrix");
+    expect(question!.tags).toContain("backtracking");
+    expect(question!.tags).toContain("graphs");
+    expect(question!.tags).toContain("depth-first-search");
+    expect(question!.starterCode).toContain("def exist");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
