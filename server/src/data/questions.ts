@@ -1204,6 +1204,25 @@ class Solution:
     category: "Graphs",
     tags: ["matrix", "backtracking", "graphs", "depth-first-search"],
   },
+  {
+    id: "word-search-python",
+    title: "Word Search (Python)",
+    description:
+      "Given an `m x n` grid of characters `board` and a string `word`, return `true` if `word` exists in the grid.\n\nThe word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.",
+    examples: [
+      "Input: board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"\nOutput: true",
+      "Input: board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"SEE\"\nOutput: true",
+      "Input: board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCB\"\nOutput: false",
+    ],
+    starterCode: `class Solution:
+    def exist(self, board: list[list[str]], word: str) -> bool:
+        pass`,
+    language: "python",
+    fileName: "solution.py",
+    difficulty: "medium",
+    category: "Graphs",
+    tags: ["matrix", "backtracking", "graphs", "depth-first-search"],
+  },
 ];
 
 /**
