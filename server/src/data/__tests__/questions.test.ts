@@ -629,6 +629,20 @@ describe("Question Bank", () => {
     expect(question!.starterCode).toContain("public int diameterOfBinaryTree");
   });
 
+  it("should define diameter-of-binary-tree-python question with all required fields", () => {
+    const question = getQuestionById("diameter-of-binary-tree-python");
+    expect(question).toBeDefined();
+    expect(question!.title).toBe("Diameter of Binary Tree (Python)");
+    expect(question!.difficulty).toBe("easy");
+    expect(question!.category).toBe("Trees");
+    expect(question!.language).toBe("python");
+    expect(question!.fileName).toBe("solution.py");
+    expect(question!.tags).toContain("tree");
+    expect(question!.tags).toContain("depth-first-search");
+    expect(question!.tags).toContain("binary-tree");
+    expect(question!.starterCode).toContain("def diameterOfBinaryTree");
+  });
+
   it("should verify every question has valid fields", () => {
     for (const question of QUESTION_BANK) {
       expect(question.id).toBeTruthy();
